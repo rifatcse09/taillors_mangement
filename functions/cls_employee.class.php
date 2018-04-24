@@ -17,7 +17,7 @@
             
             if($result)
 			{
-				   return "0|Employee Added";
+				   return "0|Waiter Added";
 			}
 			return "1|Error";
         }
@@ -29,7 +29,7 @@
         
         //get user for profile//
         public function get_emp($user){
-        $result = DB::query("select * from tbl_user_info where saved_by = '$user'  order by id desc");
+        $result = DB::query("select * from tbl_user_info where saved_by = '$user' and usertype = 'employee' order by id desc");
         return $result;
         }
         
@@ -43,6 +43,11 @@
         public function empbyid($emp){
         $result = DB::query("select * from tbl_user_info where id = '$emp'");
         return $result;
+        }
+
+        public function view_waitername(){
+            $result = DB::query("SELECT id,name FROM `tbl_user_info` WHERE usertype='waiter' and status = 1");
+            return $result;
         }
         
         /*get emp by name*/

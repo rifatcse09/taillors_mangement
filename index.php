@@ -3,7 +3,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Tailor Management</title>
-        <META NAME="POS" CONTENT="Rifat's Tailor Management">
+        <META NAME="POS" CONTENT="Rifat Tailor Management">
         <!--    favicon Icon set-->
         <link rel="icon" type="image/x-icon" href="images/dcit.ico">
             <link href="css/font-awesome.css" rel="stylesheet" type="text/css" />
@@ -21,10 +21,9 @@
 
 
                         var dataString =
-                                'username=' + username.val() +
-                                '&password=' + password.val();
+                                'username=' + username.val() + '&password=' + password.val();
 
-                        //alert(dataString);
+//                        alert(dataString);
 
                         $.ajax({
                             type: 'post',
@@ -63,7 +62,7 @@
             <!--\\\\\\\ wrapper Start \\\\\\-->
             <div class="login_page">
                 <div class="login_content">
-                    <div class="panel-heading border login_heading">login in now</div>	
+                    <div class="panel-heading border login_heading">login in now</div>
                     <form method="post" action="" class="form-horizontal" id="login">
                         <div class="form-group">
 

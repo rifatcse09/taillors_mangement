@@ -21,5 +21,5 @@ if($row_c == 0)
     {
 ?>
 
-<option value="<?php echo $row['id']; ?>"><?php echo $row['item_name']; ?></option>
+<option value="<?php echo $row['id']; ?>"><?php echo $row['item_name'].' - '.$row['size']; ?></option>
 <?php } ?>

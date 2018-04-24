@@ -34,14 +34,14 @@
         <!--\\\\\\\ contentpanel start\\\\\\-->
         <div class="pull-left breadcrumb_admin clear_both">
             <div class="pull-left page_title theme_color">
-                <h1>টেইলারিং অর্ডার</h1>
-                <h2 class="">অর্ডার আপডেট </h2>
+                <h1>Order</h1>
+                <h2 class="">manage Order</h2>
             </div>
             <div class="pull-right">
                 <ol class="breadcrumb">
-                    <li><a href="#">ড্যাশবোর্ড</a></li>
-                    <li>অর্ডার</li>
-                    <li class="active">অর্ডার আপডেট</li>
+                    <li><a href="#">Home</a></li>
+                    <li>Order</li>
+                    <li class="active">Order Manage</li>
                 </ol>
             </div>
         </div>
@@ -53,7 +53,7 @@
                             <div class="block-web">
                                 <div class="header">
                                     <div class="actions"> <a class="minimize" href="#"><i class="fa fa-chevron-down"></i></a> <a class="refresh" href="#"><i class="fa fa-repeat"></i></a> <a class="close-down" href="#"><i class="fa fa-times"></i></a> </div>
-                                    <h3 class="content-header">অর্ডার লিস্ট</h3>
+                                    <h3 class="content-header">Order List</h3>
                                 </div>
                                 <div class="porlets-content">
                                     <div class="table-responsive">

@@ -3,142 +3,95 @@ class cls_sales {
 
     //purchase insert//
     public function sale_insert(
-	$user_id, $resulttt, $cus_id, $inovice_num, $sale_total_price, $total_vat, $total_discount, $rounding_amt,
-	$sale_net_payable, $pay_type1,  $trans_num1, $trans_amt1, $pay_type2,
-	$trans_num2, $trans_amt2, $return_amt, $sale_amt_due) {
+        $user_id, $resulttt, $inovice_num, $tables, $employees, $customers, $total_vat, $sale_net_payable, $discount, $due, $g_payment, $pay_type, $trans_num) {
         
-        if($return_amt > 0)
-        {
-            $trans_amt1 = $sale_net_payable;
-        }
-        
+
     $cls_datetime = new cls_datetime();
     $datetime = $cls_datetime->datetime();
     //$date = date("ymd");
     $invoice = $inovice_num;
     //$invoice = rand();
+	
 
     $sales_date = $cls_datetime->exat_date();
-    $payed_total = $trans_amt1 + $trans_amt2;
-	$status=null;
-    //$invoice = date('Ymd').time();
-    // DB::con()->beginTransaction();
+    $payed_total = $sale_net_payable;
+	$status='Paid';
+
+
 	 
         foreach($resulttt as $values)
 			{
 				$vat_result = DB::query("select vat FROM tbl_company_info limit 1");
 				$vat = $vat_result->fetch_assoc();
-				//$data  = "'" . implode("','", $values) . "'";
-				//$data  = $data.",'$supplier_id', '$pur_ID', '$inovice_num', '$pur_date', '$user_id', '$datetime''";
-	            $item_vat = ($vat['vat']*$values[2])/100;
-			   $item_coast = DB::query("select price FROM tbl_purchase where item_id='$values[0]' order by id  desc limit 1");
-                $item_coast_price = $item_coast->fetch_assoc();
-                $cost_price =  $item_coast_price['price'];
 
-				//$data  = "'" . implode("','", $values) . "'";
-				//$data  = $data.",'$supplier_id', '$pur_ID', '$inovice_num', '$pur_date', '$user_id', '$datetime''";
-	            $item_vat = ($vat['vat']*$values[2])/100;
-				$resultt = DB::query("insert into tbl_sales(invoice_id, item_id, qnty, price, cost_price, total_price, discount, saved_by, saved_date, sales_date,vat) values 
-				                                           ('$invoice','$values[0]','$values[1]','$values[2]', '$cost_price','$values[4]', '$values[3]', '$user_id', '$datetime', '$sales_date','$item_vat')");
-        
-		/*adjust stock*/
-		$item_id =  $values[0];
-		$item_qty =  $values[1];		
-		$resultt = DB::query("update tbl_stock set available_stock = (available_stock - $item_qty) where item_id = '$item_id'");
+	            $item_vat = ($vat['vat']*$values[3])/100;
+				$resultt = DB::query("insert into tbl_sales(invoice_id, item_id, qnty, price, total_price,  saved_by, saved_date, sales_date,vat) values
+				('$invoice','$values[0]', '$values[1]', '$values[2]', '$values[3]', '$user_id', '$datetime', '$sales_date','$item_vat')");
+
           
         }
-		if($sale_amt_due>'0.00')
-		{
-			$status = 'Due';
-		}
-		else{
-			$status = 'Paid';
-		}
+
 		   
 		     $resultt = DB::query("
 				insert into tbl_sales_transaction (
 					invoice_id,
 					cus_id,
-					sub_total, 
-					discount, 
+					sub_total,
+					discount,
+					due,
 					total_vat,
-                    rounding,
-					g_total, 
-					payed_total,
-					due_amount,
+					g_total,
+					table_id,
+					employee_id,
 					remarks,
 					saved_by,
                     tra_date,
 					saved_date,
-					invoice_status
+					invoice_status,
+					pay_type
 				) values(
 					'$invoice', 
-					'$cus_id', 
-					'$sale_total_price', 
-					'$total_discount', 
-					'$total_vat',
-                    '$rounding_amt',
-					'$sale_net_payable', 
+					'$customers',
 					'$payed_total',
-					'$sale_amt_due',
+					'$discount',
+					'$due',
+					'$total_vat',
+					'$g_payment',
+					'$tables',
+					'$employees',
 					'Sales',
 					'$user_id',
                     '$sales_date',
 					'$datetime',
-					'$status'
+					'$status',
+					'$pay_type'
 				)
 			 ");
 			 
-			 if($pay_type1 != "")
-			 {
-			   $resultt = DB::query("
+			 $resultt = DB::query("
 				insert into tbl_sales_payment (
 					invoice_id,
 					cus_id,
-					payment_type, 
-					transc_no, 
+					payment_type,
+					transc_no,
 					amount,
-                    return_amt,
-					pay_date, 
-					saved_by, 
+					pay_date,
+					saved_by,
 					saved_date
+					
 				) values(
 					'$invoice', 
-					'$cus_id', 
-					'$pay_type1', 
-					'$trans_num1', 
-					'$trans_amt1',
-                    '$return_amt',
+					'$customers',
+					'$pay_type',
+					'$trans_num',
+					'$g_payment',
 					'$sales_date',
 					'$user_id',
 					'$datetime'
+
 				)
 			 ");
-			 }
-			 if($pay_type2 != "")
-			 {
-			   $resultt = DB::query("
-				insert into tbl_sales_payment (
-					invoice_id,
-					cus_id,
-					payment_type, 
-					transc_no, 
-					amount, 
-					pay_date, 
-					saved_by, 
-					saved_date
-				) values(
-					'$invoice', 
-					'$cus_id', 
-					'$pay_type2', 
-					'$trans_num2', 
-					'$trans_amt2', 
-					'$sales_date',
-					'$user_id',
-					'$datetime'
-				)
-			 ");
-			 }
+
    
     if ($resultt) {
     return "0|Inserted|$invoice";
@@ -148,7 +101,7 @@ class cls_sales {
          //DB::con()->commit();
     }
     //sale insert end//
-    
+
     
     /*today sale count user wise*/
     public function today_sale_count($user_id=0){
@@ -243,12 +196,7 @@ class cls_sales {
     /*invoice details*/
     public function invoice_details($invoice_id){
    
-        $result = DB::query("select sale.*, it.item_name,it.size, tra.sub_total, tra.discount, tra.total_vat, tra.g_total, tra.payed_total, tra.due_amount, tra.tra_date, user.name, tra.cus_id
-        from tbl_sales as sale
-        join tbl_items as it on it.id = sale.item_id
-        join tbl_sales_transaction as tra on tra.invoice_id = sale.invoice_id
-        join tbl_user_info as user on user.id = sale.saved_by
-        where sale.invoice_id = '$invoice_id'
+        $result = DB::query("select sale.*, it.item_name,it.size, tra.discount as discount_total,tra.sub_total, tra.total_vat, tra.g_total, tra.tra_date, user.name, tra.cus_id ,tra.due from tbl_sales as sale join tbl_items as it on it.id = sale.item_id join tbl_sales_transaction as tra on tra.invoice_id = sale.invoice_id join tbl_user_info as user on user.id = sale.saved_by where sale.invoice_id = '$invoice_id'
         ");
         
         return $result;

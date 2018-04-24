@@ -8,7 +8,8 @@
 	$cls_profit_loss = new cls_profit_loss();
 	$cls_employee = new cls_employee();
 	$cls_item = new cls_item();
-
+	$cls_store = new cls_store();
+	
 	$emp_id = "$_POST[emp_id]";
 	$item_id = "$_POST[item_id]";
 	$from_date = "$_POST[from_date]";
@@ -73,7 +74,7 @@
                     </tr>
                   </tfoot>
                 </table>
-                <input type="button" name="pur_report_print" class="btn btn-primary" value="Print" onclick="javascript:location.replace('purReportPrint');">
+    
               </div><!--/table-responsive-->
             </div><!--/porlets-content-->
             
@@ -84,11 +85,123 @@
     }
 ?>
 
+        <br><br>
+        <br><br>
+<?php
+
+        $query5 = $cls_store->viewstore();
+        $com_info = $query5->fetch_assoc();
+        ?>
+
+        <!--invoice report-->
+        <div class="row">
+            <div class="col-md-12" style="!border:1px dashed #333;">
+			<input type="button" name="pur_report_print" id="btnPrint" class="btn btn-primary" value="Print">
+		 <div class="block-web" id="content">
+                    <div class="header">
+                        <div style="width:100%;height:auto;border-bottom:1px dashed #000;padding:5px; padding-bottom:10px;text-align:center;font-size:15px;">
+
+                            <img src="images/logo.png" alt="" height="50" width="50" style="border-radius: 30px;">
+                            <br>
+                            <?php echo $com_info['company_name']; ?><br><?php echo $com_info['address']; ?>
+                        </div>
+                        <div align="center" style="border-top:1px dashed #333;border-bottom:1px dashed #333;font-size:16px;font-weight:bold;height:35px;line-height:35px;">Profit/Loss report</div>
+                        <div style="border-bottom:1px dashed #333;"></div>
+                    </div>
+                    <div class="porlets-content">
+                        <div class="table-responsive" >
+						
+                            <table class="table table-hover font_sm">
+                               
+									<thead>
+										<tr style="font-size:13px;">
+										  <th>SL.</th>
+										  <th>Item Name</th>
+									  
+										 
+										  <th>Avg.Pur.Price</th>
+										  <th> Avg.Sales Price</th> 
+										  <th>Sales Qnty.</th> 
+										
+										  <th>Tl. Purchase</th> 
+										  <th>Tl. Sales</th>
+										  <th>Tl. VAT</th>
+										  <th>Tl. Discount</th> 
+										  <th>Tl. Profit</th> 
+										</tr>
+									  </thead>
+                                
+								
+                                <tbody>
+								
+									<?php
+											$sl = 1;
+											$i=1;
+											$query2 = $cls_profit_loss->view_profit_loss_report($emp_id, $item_id, $from_date, $to_date);
+											while($rep_row1 = $query2->fetch_assoc()){
+												
+											 
+										?>
+											<tr class="gradeC" style="font-size:12px;">
+											  <td><?php echo $i++;?></td>
+											  <td ><?php echo $rep_row1['item_name'].'-'.$rep_row1['size'].$rep_row1['unit']; ?></td>
+										
+											  <td style="text-align:right"><?php echo $rep_row1['avg_purchase_price']; ?></td>
+											  <td style="text-align:right"><?php echo $rep_row1['avg_sales_price']; ?></td>
+											  <td style="text-align:right"><?php echo $rep_row1['total_qnty']; ?></td>
+											 
+											  <td style="text-align:right"><?php echo $rep_row1['total_purchase_price']; ?></td>
+											  <td style="text-align:right"><?php echo $rep_row1['total_sales_price']; ?></td>
+											  <td style="text-align:right"><?php echo $rep_row1['total_vat']; ?></td>
+											  <td style="text-align:right"><?php echo $rep_row1['total_discount']; ?></td>				 
+											  <td style="text-align:right"><?php echo $rep_row1['total_profit']; ?></td>
+											 
+											</tr>
+										<?php
+											}
+										?>
+										 
+									
+								  </tbody>
+								   
+                            </table>
+
+
+                        </div><!--/table-responsive-->
+                    </div><!--/porlets-content-->
+
+
+                </div><!--/block-web-->
+				 
+            </div><!--/col-md-12-->
+        </div>
+
 <script src="js/jquery-2.1.0.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/common-script.js"></script>
+<script src="js/table.js"></script>
+<script src="js/datatables.min.js"></script>
+ <script type="text/javascript">
+        $("#btnPrint").on("click", function() {
+		   var params = [
+                'height=' + screen.height,
+                'width=' + screen.width,
+                'fullscreen=yes' // only works in IE, but here for completeness
+            ].join(',');
 
+            var divContents = $("#content").html();
+            // var companyName = $("#cname").html();
 
+            var printWindow = window.open('', '', params);
+            printWindow.document.write('<html><head><title>Profit/Loss report</title>');
+            printWindow.document.write('</head><body >');
+            // printWindow.document.write(companyName);
+            printWindow.document.write(divContents);
+            printWindow.document.write('</body></html>');
+            printWindow.document.close();
+            printWindow.print();
+        });
+    </script>
 
 <!--date picker-->
 <script type="text/javascript" src="plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script> 

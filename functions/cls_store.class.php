@@ -1,13 +1,20 @@
 <?php
 	class cls_store{     
         //view store//
-        public function viewstore($user=false){
+        //Base Url Setting
+        public static $base_url = 'http://mdrifatul.info/alarabia/';
+        public function viewstore(){
         $result = DB::query("select * from tbl_company_info");
             return $result;
         }
 		
 		 public function view_vat(){
-        $result = DB::query("select vat from tbl_company_info where vat_status = '1' limit 1");
+        $result = DB::query("select vat from tbl_company_info limit 1");
+//        $result = DB::query("select vat from tbl_company_info where vat_status = '1' limit 1");
+            return $result;
+        }
+        public function shop_name_view(){
+            $result = DB::query("SELECT company_name FROM `tbl_company_info` LIMIT 0 , 1");
             return $result;
         }
         

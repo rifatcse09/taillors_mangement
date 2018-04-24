@@ -1,7 +1,47 @@
 <?php
+//session_start();
+//if($_SESSION['user_id'] == "" && $_SESSION['usertype'] == "")
+//{
+//    header('location:http://mdrifatul.info/sumona/fixed/');
+//    exit;
+//}
+////$base_url = 'http://mdrifatul.info/somona/';
+//
+//$user_id = $_SESSION['user_id'];
+//$user_type = $_SESSION['usertype'];
+////echo  $pagename = basename($_SERVER['PHP_SELF']);
+////require_once('functions/barcode.php');
+//require_once('functions/cls_dbconfig.php');
+//function __autoload($classname){
+//    require_once("functions/$classname.class.php");
+//}
+//
+//$cls_datetime = new cls_datetime();
+//$cls_user_info = new cls_user_info();
+//$cls_store = new cls_store();
+//$cls_employee = new cls_employee();
+//$cls_supplier = new cls_supplier();
+//$cls_category = new cls_category();
+//$cls_customer = new cls_customer();
+//$cls_item = new cls_item();
+//$cls_purchase = new cls_purchase();
+//$cls_stock = new cls_stock();
+//$cls_sales = new cls_sales();
+//$cls_itemunit = new cls_itemunit();
+//
+//
+////store info//
+//$query = $cls_store->viewstore($user_id);
+//$row = $query->fetch_assoc();
+//
+////user info//
+//$user_query = $cls_user_info->get_user($user_id, $user_type);
+//$us_row = $user_query->fetch_assoc();
+//
+//
 
 
-backup_tables('mdrifatul.info','root','','db_shop_fixed');
+backup_tables('mdrifatul.info','root','','db_alarabia');
 
 /* backup the db OR just a table */
 function backup_tables($host,$user,$pass,$name,$tables = '*')
@@ -24,7 +64,7 @@ function backup_tables($host,$user,$pass,$name,$tables = '*')
     {
         $tables = is_array($tables) ? $tables : explode(',',$tables);
     }
-    $return = null;
+    $return=null;
 
     //cycle through
     foreach($tables as $table)
@@ -55,17 +95,17 @@ function backup_tables($host,$user,$pass,$name,$tables = '*')
     }
 
     //save file
-    $handle = fopen('D:/db-backup-'.time().'-'.(md5(implode(',',$tables))).'.sql','w+');
+    $handle = fopen('D:/DB_Backup/alarabia-'.date('d-m-y').'-'.(md5(implode(',',$tables))).'.sql','w+');
     $complete = fwrite($handle,$return);
     if($complete){
         echo "<script>alert('Database backup is completed successfully!');</script>";
-//        header('Location:http://mdrifatul.info/lalbag/fixed/dashboard');
+//        header('Location:http://mdrifatul.info/sumona/fixed/dashboard');
 
     }
     fclose($handle);
 }
 ?>
 <script>
-    location.href="http://mdrifatul.info/lalbag/dashboard";
+    location.href="http://mdrifatul.info/alarabia/dashboard";
 </script>
-<!--<a href="http://mdrifatul.info/lalbag/fixed/dashboard">Ok,Go Back</a>-->
+<!--<a href="http://mdrifatul.info/sumona/fixed/dashboard">Ok,Go Back</a>-->

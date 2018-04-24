@@ -2,7 +2,7 @@
 	class cls_user_info{
         //user login//
 		public function login($username, $password){
-			$result = DB::query("select * from tbl_user_info where email = '$username' or username = '$username' and password = '$password' and status = '1'");
+			$result = DB::query("select * from tbl_user_info where (email = '$username' or username = '$username') and password = '$password' and status = '1'");
             $count = $result->num_rows;
 			if($count == 0){
 				return "1|Invalid login";

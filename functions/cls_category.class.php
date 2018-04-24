@@ -15,6 +15,7 @@
 		}
 		
 		else{
+			$CategoryName = ucfirst($CategoryName);
         $result = DB::query("INSERT into tbl_category (cat_name, saved_by, saved_date) values ('$CategoryName', '$user_id', '$datetime')");
             
             if($result)
@@ -52,6 +53,7 @@
 		 public function update_category($cat_id,$CategoryName,$saved_by){
 		 $cls_datetime = new cls_datetime();
          $datetime = $cls_datetime->datetime();
+
 		 $sql=DB::query("select * from tbl_category where cat_name='$CategoryName' and id!='$cat_id'");
 		 $row_count=$sql->num_rows;
 		 if($row_count>0)
@@ -59,6 +61,7 @@
 			 return "1|This Category Name Already Exist"; 
 		 }
 		 else{
+		$CategoryName = ucfirst($CategoryName);
          $result = DB::query("update tbl_category  set cat_name='$CategoryName',saved_by='$saved_by',saved_date='$datetime' where id='$cat_id'");
            if($result)
 			{

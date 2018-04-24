@@ -84,11 +84,11 @@ class cls_booking {
         $rabar = isset($_POST['rabar'])?1:0;
         $dudi = isset($_POST['dudi'])?1:0;
 
-        $result = DB::query("update tbl_order set delivery_date = '$deliver_date', name = '$name', mobile='$mobile', 
+        $result = DB::query("update tbl_order set order_no = '$order_no', delivery_date = '$deliver_date', name = '$name', mobile='$mobile', 
                             cloth = '$cloth', salary = '$salary', panjabi = '$panjabi', sherwani = '$sherwani', akchata = '$akchata', aligod = '$alighod', 
                             dhuti = '$dhuti', saluar = '$salware', cudi = '$chudi', kabli = '$suit', jubba = '$jubba', phatua = '$fhatua',
                             veltsaluar = '$belt', ambrodary = '$ambroydary', total = '$total', advance = '$advance', due = '$due',discount = '$discount',costo = '$costo', ser = '$ser', paki = '$paki'
-                            where order_no='$order_no'");
+                            where id='$order_no'");
         $resultMasterTable = DB::query("update tbl_master set lomba ='$lomba',body = '$bodyluc',tira = '$tira',hata = '$hata',colar = '$kolar',mohorikof ='$mohori_cof',plat_pada ='$plat_pada',totalpocket='$totalpocket',chain='$chain',backpocket='$backpocket',luch='$luch',medium='$medium',fhiting='$fhiting',serkolarRound='$serkolarRound',serkolarkona='$serkolarkona',kolarRound='$kolarRound',kolarKona='$kolarKona',vkolar='$vkolar',vgola='$vgola',surtorkolar='$surtorkolar',golgola = '$golgola',doubleplat='$doubleplat',boxplat='$boxplat',singleplat='$singleplat',ghunti='$ghunti',net='$net',pikingkolar='$pikingkolar',pet='$pet',hatai='$hatai',phular='$phular',cloth_biborn ='$cloth_biborn',ghono_silay='$ghono_silay',motasuta='$motasuta',cikonsuta='$cikonsuta',rabar='$rabar',dudi='$dudi',biborn ='$biborn' where order_id ='$order_no'");
 
 
@@ -194,7 +194,7 @@ class cls_booking {
     }
     //supplier payment end//
     public function lastInsertId(){
-        $result = DB::query("SELECT max(order_no) as lastOrderId FROM tbl_order");
+        $result = DB::query("SELECT max(id) as lastOrderId FROM tbl_order");
         $output = $result->fetch_assoc();
         return $output['lastOrderId'];
 
@@ -214,24 +214,14 @@ class cls_booking {
         return $result;
 	}
 
-  public function deliverd_complete($orderId){
+ public function completeOrder(){
 
-        $result = DB::query("update tbl_order set status = '4'
-                            where order_no='$orderId'");
+        $result = DB::query("select * from tbl_order where delivery_date  AND status =2 order by  delivery_date DESC");
+        return $result;
     }
     public  function order_complete($orderId){
         $result = DB::query("update tbl_order set status = '2'
-                            where order_no='$orderId'");
-    }
-     public function completeOrder(){
-
-            $result = DB::query("select * from tbl_order where  status =2 order by  delivery_date DESC");
-            return $result;
-    }
-     public function deliveredOrder(){
-
-            $result = DB::query("select * from tbl_order where status =4 order by  delivery_date DESC");
-            return $result;
+                            where id='$orderId'");
     }
 
 }

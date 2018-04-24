@@ -13,7 +13,7 @@ require_once('../functions/cls_dbconfig.php');
 	$mobile = $db->con()->real_escape_string("$_POST[mobile]");
 	$username = $db->con()->real_escape_string("$_POST[username]");
 	$password = $db->con()->real_escape_string(md5($_POST['password']));
-	$usertype = $db->con()->real_escape_string($_POST['usertype']);
+	$usertype = 'waiter';
 	$about = $db->con()->real_escape_string("$_POST[about]");
 	
 	echo $cls_employee->employee_add($user_id, $name, $email, $mobile, $username, $password, $usertype, $about);

@@ -15,11 +15,14 @@ class cls_purchase {
 			{
 				//$data  = "'" . implode("','", $values) . "'";
 				//$data  = $data.",'$supplier_id', '$pur_ID', '$inovice_num', '$pur_date', '$user_id', '$datetime''";
-	
-				$result = DB::query("insert into tbl_purchase(item_id, quantity, price, ttl_price, sup_id, pur_id, invoice, pur_date, saved_by, saved_date) values ('$values[0]', '$values[1]', '$values[2]', '$values[3]', '$supplier_id', '$pur_id', '$inovice_num', '$pur_date', '$user_id', '$datetime')");
-                $result = DB::query("insert into tbl_item_price (item_id, price, saved_by, saved_date) values ('$values[0]', '$values[4]', '$user_id', '$datetime')");
+//	            for mf and ex date
+            if(isset($values[5]) && !empty($values[5])) {
+                $result = DB::query("INSERT INTO `tbl_item_exdate` (`id`, `purchase_id`, `item_id`, `ex_date`, `saved_by`, `saved_date`) VALUES (NULL, '$pur_id', '$values[0]',  '$values[5]', '$user_id', '$datetime')");
+            }
 
-                /*for stock*/
+				$result = DB::query("insert into tbl_purchase(item_id, quantity, price, ttl_price, sup_id, pur_id, invoice, pur_date, saved_by, saved_date) values ('$values[0]', '$values[1]', '$values[3]', '$values[4]', '$supplier_id', '$pur_id', '$inovice_num', '$pur_date', '$user_id', '$datetime')");
+
+            /*for stock*/
             $item_id = $values[0];
             $item_qnty = $values[1];
             
@@ -37,7 +40,7 @@ class cls_purchase {
             }
         
         }
-
+        
         $tr_row_balnce = 0.00;
         $result = DB::query("select balance from tbl_supplier_trans where supp_id = '$supplier_id' order by id desc limit 1");
         $tr_row = $result->fetch_assoc();
@@ -115,6 +118,16 @@ class cls_purchase {
         group by pur.invoice
     ");
     
+        return $result;
+    }
+
+
+    /*today sale count user wise*/
+    public function today_purchase_count($user_id=false){
+        $cls_datetime = new cls_datetime();
+        $tra_date = $cls_datetime->exat_date();
+
+        $result = DB::query("SELECT sum(ttl_price) as today_purchase from tbl_purchase where pur_date = '$tra_date'");
         return $result;
     }
     
