@@ -103,81 +103,66 @@ class cls_booking {
 
     }
     
-    public function supplier_payment(){
+    public function orderBook(){
         $db= new DB();
        // $db->con()->begin_transaction();
         $order_no = $db->con()->real_escape_string("$_POST[order_no]");
         $deliver_date = $db->con()->real_escape_string("$_POST[deliver_date]");
         $name = $db->con()->real_escape_string("$_POST[name]");
         $mobile = $db->con()->real_escape_string("$_POST[mobile]");
-        $cloth = $db->con()->real_escape_string("$_POST[cloth]");
-        $salary = $db->con()->real_escape_string("$_POST[salary]");
+       // $cloth = $db->con()->real_escape_string("$_POST[cloth]");
+       // $salary = $db->con()->real_escape_string("$_POST[salary]");
         $total = $db->con()->real_escape_string("$_POST[total]");
         $advance = $db->con()->real_escape_string("$_POST[advance]");
         $due = $db->con()->real_escape_string("$_POST[due]");
         $discount = $db->con()->real_escape_string("$_POST[discount]");
         $panjabi = $db->con()->real_escape_string("$_POST[panjabi]");
         $sherwani = $db->con()->real_escape_string("$_POST[sherwani]");
-        $akchata = $db->con()->real_escape_string("$_POST[akchata]");
-        $alighod = $db->con()->real_escape_string("$_POST[alighod]");
-        $dhuti = $db->con()->real_escape_string("$_POST[dhuti]");
-        $salware = $db->con()->real_escape_string("$_POST[salware]");
-        $chudi = $db->con()->real_escape_string("$_POST[chudi]");
-        $suit = $db->con()->real_escape_string("$_POST[suit]");
+        $kabli = $db->con()->real_escape_string("$_POST[kabli]");
         $jubba = $db->con()->real_escape_string("$_POST[jubba]");
         $fhatua = $db->con()->real_escape_string("$_POST[fhatua]");
-        $belt = $db->con()->real_escape_string("$_POST[belt]");
-        $ambroydary = $db->con()->real_escape_string("$_POST[ambroydary]");
-        $costo = $db->con()->real_escape_string("$_POST[costo]");
-        $ser = $db->con()->real_escape_string("$_POST[ser]");
-        $paki = $db->con()->real_escape_string("$_POST[paki]");
-        $cloth_biborn = $db->con()->real_escape_string("$_POST[cloth_biborn]");
-        $cls_datetime = new cls_datetime();
-        $order_date_is = $cls_datetime->exat_date();
-
+        $payjama = $db->con()->real_escape_string("$_POST[payjama]");
+        $salware = $db->con()->real_escape_string("$_POST[salware]");
+        $cudidar = $db->con()->real_escape_string("$_POST[cudidar]");
+        $aligod = $db->con()->real_escape_string("$_POST[aligod]");
+        $akchata = $db->con()->real_escape_string("$_POST[akchata]");
+        $kolidar = $db->con()->real_escape_string("$_POST[kolidar]");
+        $kabli_shirt = $db->con()->real_escape_string("$_POST[kabli_shirt]");
+        $akchata_jubba = $db->con()->real_escape_string("$_POST[akchata_jubba]");
+        $kolidar_jubba = $db->con()->real_escape_string("$_POST[kolidar_jubba]");
+        $awami_shirt = $db->con()->real_escape_string("$_POST[awami_shirt]");
+      
         $lomba = $db->con()->real_escape_string("$_POST[lomba]");
         $bodyluc = $db->con()->real_escape_string("$_POST[bodyluc]");
-        $tira = $db->con()->real_escape_string("$_POST[tira]");
+        $fut = $db->con()->real_escape_string("$_POST[fut]");
         $hata = $db->con()->real_escape_string("$_POST[hata]");
-        $kolar = $db->con()->real_escape_string("$_POST[kolar]");
-        $mohori_cof = $db->con()->real_escape_string("$_POST[mohori_cof]");
-        $plat_pada = $db->con()->real_escape_string("$_POST[plat_pada]");
-        $totalpocket = $db->con()->real_escape_string("$_POST[totalpocket]");
-        $chain = $db->con()->real_escape_string("$_POST[chain]");
-        $backpocket = $db->con()->real_escape_string("$_POST[backpocket]");
-        $luch = $db->con()->real_escape_string("$_POST[luch]");
-        $medium = $db->con()->real_escape_string("$_POST[medium]");
-        $fhiting = $db->con()->real_escape_string("$_POST[fhiting]");
-        $serkolarRound = $db->con()->real_escape_string("$_POST[serkolarRound]");
-        $serkolarkona = $db->con()->real_escape_string("$_POST[serkolarkona]");
-        $kolarRound = $db->con()->real_escape_string("$_POST[kolarRound]");
-        $kolarKona = $db->con()->real_escape_string("$_POST[kolarKona]");
-        $vkolar = $db->con()->real_escape_string("$_POST[vkolar]");
-        $vgola = $db->con()->real_escape_string("$_POST[vgola]");
-        $surtorkolar = $db->con()->real_escape_string("$_POST[surtorkolar]");
-        $golgola = $db->con()->real_escape_string("$_POST[golgola]");
-        $doubleplat = $db->con()->real_escape_string("$_POST[doubleplat]");
-        $boxplat = $db->con()->real_escape_string("$_POST[boxplat]");
-        $singleplat = $db->con()->real_escape_string("$_POST[singleplat]");
-        $ghunti = $db->con()->real_escape_string("$_POST[ghunti]");
-        $net = $db->con()->real_escape_string("$_POST[net]");
-        $pikingkolar = $db->con()->real_escape_string("$_POST[pikingkolar]");
-        $pet = $db->con()->real_escape_string("$_POST[pet]");
-        $hatai = $db->con()->real_escape_string("$_POST[hatai]");
-        $phular = $db->con()->real_escape_string("$_POST[phular]");
-        $biborn = $db->con()->real_escape_string("$_POST[biborn]");
-        $ghono_silay = isset($_POST['ghono_silay'])?1:0;
-        $motasuta = isset($_POST['motasuta'])?1:0;
-        $cikonsuta = isset($_POST['cikonsuta'])?1:0;
-        $rabar = isset($_POST['rabar'])?1:0;
-        $dudi = isset($_POST['dudi'])?1:0;
-
+        $gola = $db->con()->real_escape_string("$_POST[gola]");
+        $mohori = $db->con()->real_escape_string("$_POST[mohori]");
+        $cuf = $db->con()->real_escape_string("$_POST[cuf]");
+        $plat_cl_sj = $db->con()->real_escape_string("$_POST[plat_cl_sj]");
+        $plat_cl_ck = $db->con()->real_escape_string("$_POST[plat_cl_ck]");
+        $panj_biborn = $db->con()->real_escape_string("$_POST[panj_biborn]");
+        $pan_plat_pada = $db->con()->real_escape_string("$_POST[pan_plat_pada]");
+        $pan_site_pocket = $db->con()->real_escape_string("$_POST[pan_site_pocket]");
+        
+        $cls_datetime = new cls_datetime();
+        $order_date_is = $cls_datetime->exat_date();
+        
+        $pay_lomba = $db->con()->real_escape_string("$_POST[pay_lomba]");
+        $pay_mohori = $db->con()->real_escape_string("$_POST[pay_mohori]");
+        $pay_komor = $db->con()->real_escape_string("$_POST[pay_komor]");
+        $pay_hai = $db->con()->real_escape_string("$_POST[pay_hai]");
+        $pai_biboron = $db->con()->real_escape_string("$_POST[pai_biboron]");
+        $pai_plat_pada = $db->con()->real_escape_string("$_POST[pai_plat_pada]");
+        $pai_site_pocket = $db->con()->real_escape_string("$_POST[pai_site_pocket]");
+        
+     
         $id = $this->lastInsertId()+1;
-        $result =DB::query("insert into tbl_order(order_no,order_date,delivery_date,name,mobile,cloth,salary,total,advance,due,discount,panjabi,sherwani,akchata,aligod,dhuti,saluar,cudi,kabli,jubba,phatua,veltsaluar,ambrodary,costo,ser,paki) 
-              values ('$id','$order_date_is','$deliver_date','$name','$mobile','$cloth','$salary','$total','$advance','$due','$discount','$panjabi','$sherwani','$akchata','$alighod','$dhuti','$salware','$chudi','$suit','$jubba','$fhatua','$belt','$ambroydary','$costo','$ser','$paki')");
+        $result =DB::query("insert into tbl_order(order_no,order_date,delivery_date,name,mobile,total,advance,due,discount,panjabi,sherwani,kabli,cudi,aligod,akchata_panj,kolidar_panj,kabli_shirt,akchata_jubba,kolidar_jubba,jubba,phatua,payjama,saluar,awami) 
+                                          values ('$id','$order_date_is','$deliver_date','$name','$mobile','$total','$advance','$due','$discount','$panjabi','$sherwani','$kabli','$cudidar','$aligod','$akchata','$kolidar','$kabli_shirt','$akchata_jubba','$kolidar_jubba','$jubba','$fhatua','$payjama','$salware','$awami_shirt')");
 
-        $resultMasterTable = DB::query("insert into tbl_master(order_id,lomba,body,tira,hata,colar,mohorikof,plat_pada,totalpocket,chain,backpocket,luch,medium,fhiting,serkolarRound,serkolarkona,kolarRound,kolarKona,vkolar,vgola,surtorkolar,golgola,doubleplat,boxplat,singleplat,ghunti,net,pikingkolar,pet,hatai,phular,cloth_biborn,ghono_silay,motasuta,cikonsuta,rabar,dudi,biborn)
-                 values ('$id','$lomba','$bodyluc','$tira','$hata','$kolar','$mohori_cof','$plat_pada','$totalpocket','$chain','$backpocket','$luch','$medium','$fhiting','$serkolarRound','$serkolarkona','$kolarRound','$kolarKona','$vkolar','$vgola','$surtorkolar','$golgola','$doubleplat','$boxplat','$singleplat','$ghunti','$net','$pikingkolar','$pet','$hatai','$phular','$cloth_biborn','$ghono_silay','$motasuta','$cikonsuta','$rabar','$dudi','$biborn')");
+        $resultMasterTable = DB::query("insert into tbl_master(order_id,lomba,body,fut,hata,gola,mohori,cuf,panj_biborn,plat_cl_ck,plat_cl_sj,pan_plat_pada,pan_site_pocket,pay_lomba,pay_mohori,pay_komor,pay_hai,pai_biboron,pai_plat_pada,pai_site_pocket)
+                                                            values ('$id','$lomba','$bodyluc','$fut','$hata','$gola','$mohori','$cuf','$panj_biborn','$plat_cl_ck','$plat_cl_sj','$pan_plat_pada','$pan_site_pocket','$pay_lomba','$pay_mohori','$pay_komor','$pay_hai','$pai_biboron','$pai_plat_pada','$pai_site_pocket')");
 
         if($result && $resultMasterTable)
         {
@@ -188,13 +173,13 @@ class cls_booking {
 
         else{
             $db->con()->rollback();
-            return 'Not Inserted';;
+            return "Not Inserted";
         }
 
     }
     //supplier payment end//
     public function lastInsertId(){
-        $result = DB::query("SELECT max(order_no) as lastOrderId FROM tbl_order");
+        $result = DB::query("SELECT max(id) as lastOrderId FROM tbl_order");
         $output = $result->fetch_assoc();
         return $output['lastOrderId'];
 
@@ -214,7 +199,7 @@ class cls_booking {
         return $result;
 	}
 
-  public function deliverd_complete($orderId){
+   public function deliverd_complete($orderId){
 
         $result = DB::query("update tbl_order set status = '4'
                             where order_no='$orderId'");
@@ -233,6 +218,7 @@ class cls_booking {
             $result = DB::query("select * from tbl_order where status =4 order by  delivery_date DESC");
             return $result;
     }
+
 
 }
 ?>

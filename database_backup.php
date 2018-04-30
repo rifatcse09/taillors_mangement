@@ -59,13 +59,13 @@ function backup_tables($host,$user,$pass,$name,$tables = '*')
     $complete = fwrite($handle,$return);
     if($complete){
         echo "<script>alert('Database backup is completed successfully!');</script>";
-//        header('Location:http://mdrifatul.info/lalbag/fixed/dashboard');
+//        header('Location:http://mdrifatul.info/taqwa/fixed/dashboard');
 
     }
     fclose($handle);
 }
 ?>
 <script>
-    location.href="http://mdrifatul.info/lalbag/dashboard";
+    location.href="http://mdrifatul.info/taqwa/dashboard";
 </script>
-<!--<a href="http://mdrifatul.info/lalbag/fixed/dashboard">Ok,Go Back</a>-->
+<!--<a href="http://mdrifatul.info/taqwa/fixed/dashboard">Ok,Go Back</a>-->

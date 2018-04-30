@@ -70,6 +70,7 @@ h1, h2, h3, h4, h5, h6 {
 .fixed {
 	position: fixed;
 }
+
 #sidebar {
 	height: 100%;
 	transition: all 0.3s ease-in-out 0s;

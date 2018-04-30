@@ -175,6 +175,13 @@ class cls_item {
         return $json;
     }
 
+       public function getAllItem(){
+        $result = DB::query("select id, item_name  from tbl_items where status = 1");
+        //$row = $result->fetch_assoc();
+        
+        return $result;;
+    }
+
 
 }
 

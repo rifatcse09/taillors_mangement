@@ -63,7 +63,7 @@
             <!--\\\\\\\ wrapper Start \\\\\\-->
             <div class="login_page">
                 <div class="login_content">
-                    <div class="panel-heading border login_heading">login in now</div>	
+                    <div class="panel-heading border login_heading">Taqwa Login</div>	
                     <form method="post" action="" class="form-horizontal" id="login">
                         <div class="form-group">
 

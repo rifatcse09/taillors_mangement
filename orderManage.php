@@ -74,9 +74,7 @@
                                             $sl = 1;
                                             $query = $cls_booking->view_order();
                                             while($order_row = $query->fetch_assoc())
-                                            {
-
-                                                ?>
+                                            {?>
                                                 <tr class="gradeC">
                                                     <td><?php if($sl < 10) { echo '0';} echo $sl++; ?></td>
                                                     <td><?php echo $order_row['order_no']; ?></td>
@@ -96,16 +94,12 @@
                                             }
                                             ?>
                                             </tbody>
-                                          
                                         </table>
                                     </div><!--/table-responsive-->
                                 </div><!--/porlets-content-->
-
-
                             </div><!--/block-web-->
                         </div><!--/col-md-12-->
                     </div><!--/row-->
-
                 </div>
             </div>
         </div>

@@ -2,7 +2,7 @@
 session_start();
 if($_SESSION['user_id'] == "" && $_SESSION['usertype'] == "")
 {
-    header('location:http://mdrifatul.info/lalbag/');
+    header('location:http://localhost/lalbag/');
     exit;
 }
 $user_id = $_SESSION['user_id'];
@@ -14,7 +14,7 @@ function __autoload($classname){
     require_once("functions/$classname.class.php");
 }
 
-$base_url = 'http://mdrifatul.info/lalbag/';
+$base_url = 'http://localhost/lalbag/';
 $cls_booking = new cls_booking();
 $cls_datetime = new cls_datetime();
 $cls_user_info = new cls_user_info();
@@ -52,7 +52,7 @@ $us_row = $user_query->fetch_assoc();
     <link href="css/font-awesome.css" rel="stylesheet" type="text/css" />
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 
-
+    <link href="css/custome.css" rel="stylesheet" type="text/css" />
     <link href="css/animate.css" rel="stylesheet" type="text/css" />
     <link href="css/admin.css" rel="stylesheet" type="text/css" />
     <link href="css/jquerysctipttop.css" rel="stylesheet" type="text/css">
@@ -157,13 +157,13 @@ $us_row = $user_query->fetch_assoc();
                             </ul>
                         </li>
                     <?php } ?>
-                    <li> <a href="javascript:void(0);"> <i class="fa fa-tasks"></i> ফ্যাব্রিক ক্যাটাগরি <span class="plus"><i class="fa fa-plus"></i></span></a>
+<!--                    <li> <a href="javascript:void(0);"> <i class="fa fa-tasks"></i> ফ্যাব্রিক ক্যাটাগরি <span class="plus"><i class="fa fa-plus"></i></span></a>
                         <ul>
                             <li> <a href="categoryAdd"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b> ক্যাটাগরি এন্ট্রি</b> </a> </li>
                             <li> <a href="categoryManage"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>ক্যাটাগরি লিস্ট</b> </a> </li>
                         </ul>
-                    </li>
-                    <li> <a href="javascript:void(0);"> <i class="fa fa-tasks"></i> ফ্যাব্রিক <span class="plus"><i class="fa fa-plus"></i></span></a>
+                    </li>-->
+<!--                    <li> <a href="javascript:void(0);"> <i class="fa fa-tasks"></i> ফ্যাব্রিক <span class="plus"><i class="fa fa-plus"></i></span></a>
                         <ul>
                             <li> <a href="itemUnit"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>ফ্যাব্রিক একক</b> </a> </li>
                             <li> <a href="itemUnitManage"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>একক লিস্ট</b> </a> </li>
@@ -171,10 +171,10 @@ $us_row = $user_query->fetch_assoc();
                             <li> <a href="itemManage"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>ফ্যাব্রিক লিস্ট</b> </a> </li>
                             <li> <a href="itemPrice"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>ফ্যাব্রিক দাম নির্ধারণ</b> </a> </li>
                         </ul>
-                    </li>
+                    </li>-->
 
                     <!--supplier-->
-                    <li> <a href="javascript:void(0);"> <i class="fa fa-suitcase"></i> সরবরাহকারী <span class="plus"><i class="fa fa-plus"></i></span></a>
+<!--                    <li> <a href="javascript:void(0);"> <i class="fa fa-suitcase"></i> সরবরাহকারী <span class="plus"><i class="fa fa-plus"></i></span></a>
                         <ul>
                             <li> <a href="supplierAdd"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>সরবরাহকারী এন্ট্রি </b> </a> </li>
                             <li> <a href="supplierManage"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>সরবরাহকারী লিস্ট </b> </a> </li>
@@ -185,25 +185,25 @@ $us_row = $user_query->fetch_assoc();
                                 <li> <a href="supDueReport"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>সরবরাহকারীর বকেয়া</b> </a> </li>
                             <?php } ?>
                         </ul>
-                    </li>
+                    </li>-->
                     <!--supplier end-->
 
                     <!--purchase-->
-                    <li> <a href="javascript:void(0);"> <i class="fa fa-tasks"></i> ক্রয় <span class="plus"><i class="fa fa-plus"></i></span></a>
+<!--                    <li> <a href="javascript:void(0);"> <i class="fa fa-tasks"></i> ক্রয় <span class="plus"><i class="fa fa-plus"></i></span></a>
                         <ul>
                             <li> <a href="purchase"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>ক্রয় এন্ট্রি</b> </a> </li>
                             <li> <a href="purchaseReport"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>ক্রয় রিপোর্ট</b> </a> </li>
                             <li> <a href="purchaseInvReport"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>ইনভইচে রিপোর্ট</b> </a> </li>
                         </ul>
-                    </li>
+                    </li>-->
                     <!--sale-->
-                    <li> <a href="javascript:void(0);"> <i class="fa fa-tasks"></i> বিক্রয় <span class="plus"><i class="fa fa-plus"></i></span></a>
+<!--                    <li> <a href="javascript:void(0);"> <i class="fa fa-tasks"></i> বিক্রয় <span class="plus"><i class="fa fa-plus"></i></span></a>
 
                         <ul>
                             <li> <a href="sales"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>বিক্রয় এন্ট্রি</b> </a> </li>
                             <li> <a href="salesReport"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>বিক্রয় রিপোর্ট</b> </a> </li>
                         </ul>
-                    </li>
+                    </li>-->
                     <!--sale end-->
 
                     <!--employee-->
@@ -220,14 +220,14 @@ $us_row = $user_query->fetch_assoc();
                     <?php } ?>
                     <!--employee end-->
                     <!--customer-->
-                    <li> <a href="javascript:void(0);"> <i class="fa fa-user"></i> ক্রেতা <span class="plus"><i class="fa fa-plus"></i></span></a>
+<!--                    <li> <a href="javascript:void(0);"> <i class="fa fa-user"></i> ক্রেতা <span class="plus"><i class="fa fa-plus"></i></span></a>
                         <ul>
                             <li> <a href="customerAdd"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>ক্রেতা এন্ট্রি</b> </a> </li>
                             <li> <a href="customerManage"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>ক্রেতা লিস্ট</b> </a> </li>
-      <!--                      <li> <a href="cutomerRecpay"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Receive Payment</b> </a> </li>
-                            <li> <a href="cusDueReport"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Customer Due Report</b> </a> </li>-->
+                            <li> <a href="cutomerRecpay"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Receive Payment</b> </a> </li>
+                            <li> <a href="cusDueReport"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Customer Due Report</b> </a> </li>
                         </ul>
-                    </li>
+                    </li>-->
                     <!--customer end-->
 
                     <!--report-->

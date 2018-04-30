@@ -1,6 +1,11 @@
 <?php
 require_once("include/header.php");
+$cls_datetime = new cls_datetime();
+$cls_booking = new cls_booking();
+$lastId = $cls_booking->lastInsertId(); 
+$newId = $lastId + 1;
 ?>
+
 <script>
         $(document).ready(function() {
             var  total = 0;
@@ -9,48 +14,79 @@ require_once("include/header.php");
             var discount = 0;
             var advance = 0;
             var due = 0;
-            $("#cloth").on('input',function () {
-                 cloth = ($(this).val().trim()=="")?0:$(this).val().trim();
-                 discount = $("#discount").val().trim()== ""?0:$("#discount").val().trim();
-                 salary = ($('#salary').val().trim()== "")?0:$('#salary').val();
-                 advance  = ($('#advance').val().trim()== "")?0:$('#advance').val();
-                 total = parseInt(cloth)+parseInt(salary)-parseInt(discount);
-                due  = total - parseInt(advance);
-                $("#total").val(total);
-                $("#due").val(due);
-                console.log(advance);
-            });
-            $("#salary").on('input',function () {
-                salary = ($(this).val().trim()=="")?0:$(this).val().trim();
-                discount = $("#discount").val().trim()== ""?0:$("#discount").val().trim();
-                cloth = $('#cloth').val().trim()==""?0:$('#cloth').val().trim();
-                advance  = ($('#advance').val().trim()== "")?0:$('#advance').val();
-                total = parseInt(cloth)+parseInt(salary)-parseInt(discount);
-                due  = total - parseInt(advance);
-                $("#total").val(total);
-                $("#due").val(due);
-            });
+            $(".check-list").on('click',function () {
+                var textArea = $(".pi-biboron").val();
+                //console.log(textArea.length);
+                if (textArea.length > 0 && textArea.indexOf($(this).val()) > -1) {
+                            textArea.replace($(this).val(), '');
+                            //console.log($(this).val());
+                        } else {
+                            $('.pi-biboron').append('\n' + $(this).val());
+                            console.log($(this).val());
+                         // alert("No Data found in Text Area");
+                        }
 
-            $("#discount").on('input',function () {
-                discount = ($(this).val().trim()=="")?0:$(this).val().trim();
-                salary = $("#salary").val().trim()== ""?0:$("#salary").val().trim();
-                cloth = $('#cloth').val().trim()==""?0:$('#cloth').val().trim();
-                advance  = ($('#advance').val().trim()== "")?0:$('#advance').val();
-                total = parseInt(cloth)+parseInt(salary)-parseInt(discount);
-                due  = total - parseInt(advance);
-                $("#total").val(total);
-                $("#due").val(due);
+              //  $('.pi-biboron').remove($(this).val());
+            
             });
-            $("#advance").on('input',function () {
-                discount = ($("#discount").val().trim()=="")?0:$("#discount").val().trim();
-                salary = $("#salary").val().trim()== ""?0:$("#salary").val().trim();
-                cloth = $('#cloth').val().trim()==""?0:$('#cloth').val().trim();
-                advance  = ($(this).val().trim()== "")?0:$(this).val();
-                total = parseInt(cloth)+parseInt(salary)-parseInt(discount);
-                due  = total - parseInt(advance);
-                $("#total").val(total);
-                $("#due").val(due);
+            
+              $(".check-list-panj").on('click',function () {
+                var textAreaPanj = $(".panj_biborn").val();
+                //console.log(textArea.length);
+                if (textAreaPanj.length > 0 && textAreaPanj.indexOf($(this).val()) > -1) {
+                            textAreaPanj.replace($(this).val(), '');
+                            //console.log($(this).val());
+                        } else {
+                            $('.panj_biborn').append('\n' + $(this).val());
+                            console.log($(this).val());
+           
+                        }
+
+              //  $('.pi-biboron').remove($(this).val());
+            
             });
+//            $("#cloth").on('input',function () {
+//                 cloth = ($(this).val().trim()=="")?0:$(this).val().trim();
+//                 discount = $("#discount").val().trim()== ""?0:$("#discount").val().trim();
+//                 salary = ($('#salary').val().trim()== "")?0:$('#salary').val();
+//                 advance  = ($('#advance').val().trim()== "")?0:$('#advance').val();
+//                 total = parseInt(cloth)+parseInt(salary)-parseInt(discount);
+//                due  = total - parseInt(advance);
+//                $("#total").val(total);
+//                $("#due").val(due);
+//                console.log(advance);
+//            });
+//            $("#salary").on('input',function () {
+//                salary = ($(this).val().trim()=="")?0:$(this).val().trim();
+//                discount = $("#discount").val().trim()== ""?0:$("#discount").val().trim();
+//                cloth = $('#cloth').val().trim()==""?0:$('#cloth').val().trim();
+//                advance  = ($('#advance').val().trim()== "")?0:$('#advance').val();
+//                total = parseInt(cloth)+parseInt(salary)-parseInt(discount);
+//                due  = total - parseInt(advance);
+//                $("#total").val(total);
+//                $("#due").val(due);
+//            });
+
+//            $("#discount").on('input',function () {
+//                discount = ($(this).val().trim()=="")?0:$(this).val().trim();
+//                salary = $("#salary").val().trim()== ""?0:$("#salary").val().trim();
+//                cloth = $('#cloth').val().trim()==""?0:$('#cloth').val().trim();
+//                advance  = ($('#advance').val().trim()== "")?0:$('#advance').val();
+//                total = parseInt(cloth)+parseInt(salary)-parseInt(discount);
+//                due  = total - parseInt(advance);
+//                $("#total").val(total);
+//                $("#due").val(due);
+//            });
+//            $("#advance").on('input',function () {
+//               // discount = ($("#discount").val().trim()=="")?0:$("#discount").val().trim();
+//               // salary = $("#salary").val().trim()== ""?0:$("#salary").val().trim();
+//               // cloth = $('#cloth').val().trim()==""?0:$('#cloth').val().trim();
+//                advance  = ($(this).val().trim()== "")?0:$(this).val();
+//                total = parseInt(cloth)+parseInt(salary)-parseInt(discount);
+//                due  = total - parseInt(advance);
+//                $("#total").val(total);
+//                $("#due").val(due);
+//            });
 
         });
     </script>
@@ -83,7 +119,7 @@ require_once("include/header.php");
                             <div class="block-web">
                                 <div class="header">
                                     <div class="actions"> <a class="minimize" href="#"><i class="fa fa-chevron-down"></i></a><a class="close-down" href="#"><i class="fa fa-times"></i></a> </div>
-                                    <h3 class="content-header">Order Receipt</h3>
+                                    <h3 class="content-header">Order Receipt No : <span style="font-weight: bold;color:green;border: 3px solid red;border-radius: 40%;padding: .8%;"><?php echo $newId ?></span> <span style="padding-left:2%">Date : <?php echo $cls_datetime->exat_date();?></span></h3>
                                 </div>
                                 <div class="porlets-content">
                                     <div class="row">
@@ -92,46 +128,24 @@ require_once("include/header.php");
 
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <div class="col-sm-4">
-                                                        <div class="form-group">
-                                                            <label class="col-sm-6 control-label">Order No.</label>
-                                                            <?php $cls_booking = new cls_booking();
-                                                            $lastId = $cls_booking->lastInsertId(); ?>
-                                                            <div class="col-sm-6">
-                                                                <input type="text" class="form-control" name="order_no"
-                                                                       value="<?php echo $lastId + 1 ?>" readonly>
-                                                            </div>
-                                                        </div><!--/form-group-->
+                                                    <input type="hidden" class="form-control" name="order_no"
+                                                           value="<?php echo $newId ?>" readonly>
 
-                                                    </div>
-                                                    <div class="col-sm-4">
-                                                        <div class="form-group">
-                                                            <label class="col-sm-6 control-label" style='font-weight: bold'>Deliver date :</label>
-                                                            <div class="col-sm-6">
-                                                                <input type="text" id="deliver_date" class="form-control"
-                                                                       name="deliver_date" required>
-                                                            </div>
-                                                        </div><!--/form-group-->
-                                                    </div>
-
-                                                    <div class="col-sm-4">
-                                                        <div class="form-group">
-                                                            <label class="col-sm-6 control-label">Order date :</label>
-                                                            <div class="col-sm-6">
-                                                                <input type="text" class="form-control" name="order_date"
+                                                    <input type="hidden" class="form-control" name="order_date"
                                                                        value="<?php
-
-                                                                       $cls_datetime = new cls_datetime();
-                                                                       echo $order_date_is = $cls_datetime->exat_date()?>" readonly>
+                                                                       echo $order_date_is = $cls_datetime->exat_date()?>">
+                                                    <div class="col-sm-4">
+                                                        <div class="form-group">
+                                                            <label class="col-sm-6 control-label" style="text-align:left">Delivery date :</label>
+                                                            <div class="col-sm-6" style="text-align:left;padding-left:0px;">
+                                                               <input type="text" id="deliver_date" class="form-control"
+                                                           name="deliver_date" required>
+                                                               
                                                             </div>
                                                         </div><!--/form-group-->
 
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="col-sm-6">
+                                                    <div class="col-sm-4">
                                                         <div class="form-group">
                                                             <label class="col-sm-4 control-label">Name :</label>
                                                             <div class="col-sm-8">
@@ -141,9 +155,7 @@ require_once("include/header.php");
                                                         </div><!--/form-group-->
 
                                                     </div>
-
-
-                                                    <div class="col-sm-6">
+                                                    <div class="col-sm-4">
                                                         <div class="form-group">
                                                             <label class="col-sm-4 control-label">Mobile :</label>
                                                             <div class="col-sm-8">
@@ -155,26 +167,156 @@ require_once("include/header.php");
                                                     </div>
                                                 </div>
                                             </div>
+                                   
+                                            <!-- item part -->
+                                            <div class="row" style="border:1px dotted gray;padding-top: 2%;">
+                                                <div class="col-md-12"> 
+                                                    <div class="col-md-2">
+                                                        <div class="form-group">
+<!--                                                            <label class="col-sm-3 control-label">পাঞ্জাবী</label>-->
+                                                            <div class="col-sm-10">
+                                                                <input type="number" class="form-control" name="panjabi" placeholder="পাঞ্জাবী">
+                                                            </div>
+                                                        </div><!--/form-group-->
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <div class="form-group">
+<!--                                                            <label class="col-sm-3 control-label">শেরওয়ানী</label>-->
+                                                            <div class="col-sm-10">
+                                                                <input type="number" class="form-control" name="sherwani" placeholder="শেরওয়ানী">
+                                                            </div>
+                                                        </div><!--/form-group-->
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <div class="form-group">
+<!--                                                            <label class="col-sm-3 control-label">কাবলী</label>-->
+                                                            <div class="col-sm-10">
+                                                                <input type="number" class="form-control" name="kabli" placeholder="কাবলী">
+                                                            </div>
+                                                        </div><!--/form-group-->
+                                                    </div>
+
+                                                    <div class="col-md-2">
+                                                        <div class="form-group">
+<!--                                                            <label class="col-sm-3 control-label">জুব্বা</label>-->
+                                                            <div class="col-sm-10">
+                                                                <input type="number" class="form-control" name="jubba" placeholder="জুব্বা">
+                                                            </div>
+                                                        </div><!--/form-group-->
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <div class="form-group">
+<!--                                                            <label class="col-sm-3 control-label">ফতুয়া</label>-->
+                                                            <div class="col-sm-10">
+                                                                <input type="number" class="form-control" name="fhatua" placeholder="ফতুয়া">
+                                                            </div>
+                                                        </div><!--/form-group-->
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <div class="form-group">
+                                                            <!--                                                            <label class="col-sm-3 control-label">পায়জামা</label>-->
+                                                            <div class="col-sm-10">
+                                                                <input type="text" class="form-control" name="payjama" placeholder="পায়জামা">
+                                                            </div>
+                                                        </div><!--/form-group-->
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12"> 
+                                                
+                                                      <div class="col-md-2">
+                                                        <div class="form-group">
+<!--                                                            <label class="col-sm-3 control-label"> সালোয়ার </label>-->
+                                                            <div class="col-sm-10">
+                                                                <input type="text" class="form-control" name="salware" placeholder="সালোয়ার">
+                                                            </div>
+                                                        </div><!--/form-group-->
+                                                    </div>
+                                                       <div class="col-md-2">
+                                                        <div class="form-group">
+<!--                                                            <label class="col-sm-3 control-label"> সালোয়ার </label>-->
+                                                            <div class="col-sm-10">
+                                                                <input type="text" class="form-control" name="cudidar" placeholder="চুড়িদার">
+                                                            </div>
+                                                        </div><!--/form-group-->
+                                                    </div>
+                                                    
+                                                     <div class="col-md-2">
+                                                        <div class="form-group">
+<!--                                                            <label class="col-sm-3 control-label"> সালোয়ার </label>-->
+                                                            <div class="col-sm-10">
+                                                                <input type="text" class="form-control" name="aligod" placeholder="আলীগড়">
+                                                            </div>
+                                                        </div><!--/form-group-->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- /item part -->
+                                              <!-- category part -->
+                                            <div class="row" style="border:1px dotted gray;padding-top: 2%;margin-top: 1%;margin-bottom: 1%;">
+                                                <div class="col-md-12"> 
+                                                    <div class="col-md-2">
+                                                        <div class="form-group">
+<!--                                                            <label class="col-sm-3 control-label">একছটা পাঞ্জাবী</label>-->
+                                                            <div class="col-sm-12">
+                                                                <input type="number" class="form-control" name="akchata" placeholder="একছঃ পাঞ্জঃ">
+                                                            </div>
+                                                        </div><!--/form-group-->
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                             <div class="form-group">
+<!--                                                            <label class="col-sm-3 control-label"> কলিদার পাঞ্জাবী</label>-->
+                                                            <div class="col-sm-10">
+                                                                <input type="number" class="form-control" name="kolidar" placeholder="কলিদঃ পাঞ্জ" >
+                                                            </div>
+                                                        </div><!--/form-group-->
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <div class="form-group">
+<!--                                                            <label class="col-sm-3 control-label">কাবলী শার্ট</label>-->
+                                                            <div class="col-sm-10">
+                                                                <input type="number" class="form-control" name="kabli_shirt" placeholder="কাবঃ শার">
+                                                            </div>
+                                                        </div><!--/form-group-->
+                                                    </div>
+                                                     <div class="col-md-2">
+                                                        <div class="form-group">
+<!--                                                            <label class="col-sm-3 control-label"> এক্সছটা জুব্বা</label>-->
+                                                            <div class="col-sm-10">
+                                                                <input type="number" class="form-control" name="akchata_jubba" placeholder="এক্সঃ জুব">
+                                                            </div>
+                                                        </div><!--/form-group-->
+                                                    </div>
+
+                                                    <div class="col-md-2">
+                                                        <div class="form-group">
+<!--                                                            <label class="col-sm-3 control-label"> কলিদার জুব্বা</label>-->
+                                                            <div class="col-sm-10">
+                                                                <input type="number" class="form-control" name="kolidar_jubba" placeholder="কলিদঃ জুব ">
+                                                            </div>
+                                                        </div><!--/form-group-->
+                                                    </div>
+                                                     <div class="col-md-2">
+                                                        <div class="form-group">
+<!--                                                            <label class="col-sm-3 control-label">আওয়ামী শার্ট</label>-->
+                                                            <div class="col-sm-10">
+                                                                <input type="number" class="form-control" name="awami_shirt" placeholder="আওয়ামী">
+                                                            </div>
+                                                        </div><!--/form-group-->
+                                                    </div>
+                                                 
+                                                </div>
+                                            
+                                            </div>
+                                            <!-- /category part -->
+                                            
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="col-md-3">
 
                                                         <div class="form-group">
-                                                            <label class="col-sm-3 control-label">কাপড়</label>
-                                                            <div class="col-sm-9">
-                                                                <input type="number" class="form-control" name="cloth" id="cloth">
-                                                            </div>
-                                                        </div><!--/form-group-->
-                                                        <div class="form-group">
-                                                            <label class="col-sm-3 control-label">মজুরী</label>
-                                                            <div class="col-sm-9">
-                                                                <input type="number" class="form-control" name="salary" id="salary">
-                                                            </div>
-                                                        </div><!--/form-group-->
-                                                        <div class="form-group">
                                                             <label class="col-sm-3 control-label">মোট</label>
                                                             <div class="col-sm-9">
-                                                                <input type="number" class="form-control" name="total" id="total" readonly>
+                                                                <input type="number" class="form-control" name="total" id="total">
                                                             </div>
                                                         </div><!--/form-group-->
 
@@ -187,7 +329,7 @@ require_once("include/header.php");
                                                         <div class="form-group">
                                                             <label class="col-sm-3 control-label">বাকী</label>
                                                             <div class="col-sm-9">
-                                                                <input type="number" class="form-control" name="due" id="due" readonly>
+                                                                <input type="number" class="form-control" name="due" id="due">
                                                             </div>
                                                         </div><!--/form-group-->
 
@@ -202,70 +344,6 @@ require_once("include/header.php");
                                                     <div class="col-md-3">
 
                                                         <div class="form-group">
-                                                            <label class="col-sm-3 control-label">পাঞ্জাবী</label>
-                                                            <div class="col-sm-9">
-                                                                <input type="number" class="form-control" name="panjabi">
-                                                            </div>
-                                                        </div><!--/form-group-->
-
-                                                        <div class="form-group">
-                                                            <label class="col-sm-3 control-label">শেরওয়ানী</label>
-                                                            <div class="col-sm-9">
-                                                                <input type="number" class="form-control" name="sherwani">
-                                                            </div>
-                                                        </div><!--/form-group-->
-
-                                                        <div class="form-group">
-                                                            <label class="col-sm-3 control-label">একছাটা পাঞ্জাবী</label>
-                                                            <div class="col-sm-9">
-                                                                <input type="number" class="form-control" name="akchata">
-                                                            </div>
-                                                        </div><!--/form-group-->
-
-
-                                                        <div class="form-group">
-                                                            <label class="col-sm-3 control-label">কাবলী স্যুট</label>
-                                                            <div class="col-sm-9">
-                                                                <input type="number" class="form-control" name="suit">
-                                                            </div>
-                                                        </div><!--/form-group-->
-
-                                                        <div class="form-group">
-                                                            <label class="col-sm-3 control-label">এরাবিয়ান জুব্বা</label>
-                                                            <div class="col-sm-9">
-                                                                <input type="number" class="form-control" name="jubba">
-                                                            </div>
-                                                        </div><!--/form-group-->
-
-                                                        <div class="form-group">
-                                                            <label class="col-sm-3 control-label">ফতুয়া</label>
-                                                            <div class="col-sm-9">
-                                                                <input type="number" class="form-control" name="fhatua">
-                                                            </div>
-                                                        </div><!--/form-group-->
-
-                                                        <div class="form-group">
-                                                            <label class="col-sm-3 control-label"> এমব্রয়ডারী</label>
-                                                            <div class="col-sm-9">
-                                                                <input type="number" class="form-control" name="ambroydary">
-                                                            </div>
-                                                        </div><!--/form-group-->
-
-
-                                                        <div class="form-group">
-                                                            <label class="col-sm-3 control-label"> বিবরণ </label>
-                                                            <div class="col-sm-9">
-                                                            <textarea class="form-control"
-                                                                      name="cloth_biborn"></textarea>
-                                                            </div>
-                                                        </div><!--/form-group-->
-
-
-                                                    </div>
-
-                                                    <div class="col-md-3">
-
-                                                        <div class="form-group">
                                                             <label class="col-sm-3 control-label">লম্বা</label>
                                                             <div class="col-sm-9">
                                                                 <input type="text" class="form-control" name="lomba">
@@ -273,346 +351,220 @@ require_once("include/header.php");
                                                         </div><!--/form-group-->
 
                                                         <div class="form-group">
-                                                            <label class="col-sm-3 control-label">বডি + লুছ</label>
+                                                            <label class="col-sm-3 control-label">বডি</label>
                                                             <div class="col-sm-9">
                                                                 <input type="text" class="form-control" name="bodyluc">
                                                             </div>
                                                         </div><!--/form-group-->
 
                                                         <div class="form-group">
-                                                            <label class="col-sm-3 control-label">তিরা</label>
+                                                            <label class="col-sm-3 control-label">ফুট</label>
                                                             <div class="col-sm-9">
-                                                                <input type="text" class="form-control" name="tira">
+                                                                <input type="text" class="form-control" name="fut">
                                                             </div>
                                                         </div><!--/form-group-->
 
 
                                                         <div class="form-group">
-                                                            <label class="col-sm-3 control-label">হাতা লম্বা </label>
+                                                            <label class="col-sm-3 control-label">হাতা</label>
                                                             <div class="col-sm-9">
                                                                 <input type="text" class="form-control" name="hata">
                                                             </div>
                                                         </div><!--/form-group-->
 
                                                         <div class="form-group">
-                                                            <label class="col-sm-3 control-label">কলার</label>
+                                                            <label class="col-sm-3 control-label">গলা</label>
                                                             <div class="col-sm-9">
-                                                                <input type="text" class="form-control" name="kolar">
+                                                                <input type="text" class="form-control" name="gola">
                                                             </div>
                                                         </div><!--/form-group-->
 
                                                         <div class="form-group">
-                                                            <label class="col-sm-3 control-label">মহুরী / কফ</label>
+                                                            <label class="col-sm-3 control-label">মহুরী</label>
                                                             <div class="col-sm-9">
-                                                                <input type="text" class="form-control" name="mohori_cof">
+                                                                <input type="text" class="form-control" name="mohori">
                                                             </div>
                                                         </div><!--/form-group-->
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3 control-label">কফ</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="text" class="form-control" name="cuf">
+                                                            </div>
+                                                        </div><!--/form-group-->
+                                                       <div class="form-group">
+                                                            <label class="col-sm-5 control-label" style="text-align:left;padding-left: 0px;padding-right: 0px">প্লেট কলার সোজা </label>
+                                                            <div class="col-sm-7" style="padding-left:0px;float: left">
+                                                                
+                                                                <select class="form-control" name="plat_cl_sj">
+                                                                    <option value="">Select</option>
+                                                                    <option value="">১</option>
+                                                                    <option value="">। ১</option>
+                                                                    <option value="">।। ১</option>
+                                                                </select>
+                                                            </div>
+                                                        </div><!--/form-group-->
+                                                        <div class="form-group">
+                                                            <label class="col-sm-5 control-label" style="text-align:left;padding-left: 0px;padding-right: 0px">প্লেট কলার চৌকা</label>
+                                                            <div class="col-sm-7" style="padding-left:0px;float: left">
+                                                                 <select class="form-control" name="plat_cl_ck">
+                                                                    <option value="">Select</option>
+                                                                     <option value="">১</option>
+                                                                    <option value="">। ১</option>
+                                                                    <option value="">।। ১</option>
+                                                                </select>
+                                                            </div>
+                                                        </div><!--/form-group-->
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3 control-label"> বিবরণ </label>
+                                                            <div class="col-sm-9">
+                                                            <textarea class="form-control panj_biborn"
+                                                                      name="panj_biborn" rows="6" cols="50"></textarea>
+                                                            </div>
+                                                        </div><!--/form-group-->
+                                                         <div class="form-group">
+                                                            <label class="col-sm-3 control-label"> প্লেট ফাডা </label>
+                                                            <div class="col-sm-9">
+                                                                <input type="text" class="form-control" name="pan_plat_pada">
+                                                            </div>
+                                                        </div><!--/form-group-->
+
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3 control-label"> সাইট পকেট </label>
+                                                            <div class="col-sm-9">
+                                                                <input type="text" class="form-control" name="pan_site_pocket">
+                                                            </div>
+                                                        </div><!--/form-group-->
+                                                    </div>
+                                                    
+
+                                                    <div class="col-md-3">   
+                                                          <div class="form-group">
+                                                              <label class="col-sm-12 control-label" style="text-align:left;padding-right: 0px"> পায়জামা/ সালোয়ার এর মাপের  জন্য</label>
+                                                   
+                                                        </div><!--/form-group-->
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3 control-label">লম্বা</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="text" class="form-control" name="pay_lomba" >
+                                                            </div>
+                                                        </div><!--/form-group-->
+                                                   
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3 control-label">মহুরী</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="text" class="form-control" name="pay_mohori">
+                                                            </div>
+                                                        </div><!--/form-group-->
+                                                        
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3 control-label">কোমর</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="text" class="form-control" name="pay_komor">
+                                                            </div>
+                                                        </div><!--/form-group-->
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3 control-label">হাই</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="text" class="form-control" name="pay_hai">
+                                                            </div>
+                                                        </div><!--/form-group-->
+                         
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3 control-label"> বিবরণ </label>
+                                                            <div class="col-sm-9">
+                                                                <textarea class="form-control pi-biboron"
+                                                                          name="pai_biboron" rows="6" cols="50"><?php echo '২ পকেট চেইন'. "\r\n". '৪ সেলাই'."\r\n".'মোটা রাবার' ?></textarea>
+                                                            </div>
+                                                        </div><!--/form-group-->
+
 
                                                         <div class="form-group">
                                                             <label class="col-sm-3 control-label"> প্লেট ফাডা </label>
                                                             <div class="col-sm-9">
-                                                                <input type="text" class="form-control" name="plat_pada">
+                                                                <input type="text" class="form-control" name="pai_plat_pada">
                                                             </div>
                                                         </div><!--/form-group-->
 
-                                                    </div>
-
-                                                    <div class="col-md-3">
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <div class="form-group">
-                                                                    <label class="col-sm-3 control-label"> লুছ </label>
-                                                                    <div class="col-sm-9">
-                                                                        <input type="text" class="form-control" name="luch">
-                                                                    </div>
-                                                                </div><!--/form-group-->
-
-                                                                <div class="form-group">
-                                                                    <label class="col-sm-3 control-label"> মিডিয়াম </label>
-                                                                    <div class="col-sm-9">
-                                                                        <input type="text" class="form-control" name="medium">
-                                                                    </div>
-                                                                </div><!--/form-group-->
-
-                                                                <div class="form-group">
-                                                                    <label class="col-sm-3 control-label"> ফিটিং </label>
-                                                                    <div class="col-sm-9">
-                                                                        <input type="text" class="form-control" name="fhiting">
-                                                                    </div>
-                                                                </div><!--/form-group-->
-
-                                                                <div class="form-group">
-                                                                    <label class="col-sm-3 control-label"> সেরঃ কলার রাউন্ড </label>
-                                                                    <div class="col-sm-9">
-                                                                        <input type="text" class="form-control"
-                                                                               name="serkolarRound">
-                                                                    </div>
-                                                                </div><!--/form-group-->
-
-
-                                                                <div class="form-group">
-                                                                    <label class="col-sm-3 control-label"> সেরঃ কলার কোনা </label>
-                                                                    <div class="col-sm-9">
-                                                                        <input type="text" class="form-control" name="serkolarkona">
-                                                                    </div>
-                                                                </div><!--/form-group-->
-
-                                                                <div class="form-group">
-                                                                    <label class="col-sm-3 control-label"> কলার রউন্দ </label>
-                                                                    <div class="col-sm-9">
-                                                                        <input type="text" class="form-control" name="kolarRound">
-                                                                    </div>
-                                                                </div><!--/form-group-->
-                                                                <div class="form-group">
-                                                                    <label class="col-sm-3 control-label"> কলার কোনা </label>
-                                                                    <div class="col-sm-9">
-                                                                        <input type="text" class="form-control" name="kolarKona">
-                                                                    </div>
-                                                                </div><!--/form-group-->
-
-                                                                <div class="form-group">
-                                                                    <label class="col-sm-3 control-label"> ভি কলার </label>
-                                                                    <div class="col-sm-9">
-                                                                        <input type="text" class="form-control" name="vkolar">
-                                                                    </div>
-                                                                </div><!--/form-group-->
-                                                                <div class="form-group">
-                                                                    <label class="col-sm-3 control-label"> সিঙ্গেল প্লেট  </label>
-                                                                    <div class="col-sm-9">
-                                                                        <input type="text" class="form-control" name="singleplat">
-                                                                    </div>
-                                                                </div><!--/form-group-->
-
-
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3 control-label"> সাইট পকেট </label>
+                                                            <div class="col-sm-9">
+                                                                <input type="text" class="form-control" name="pai_site_pocket">
                                                             </div>
-                                                            <div class="col-md-6">
-                                                                <div class="form-group">
-                                                                    <label class="col-sm-3 control-label"> ভি গলা </label>
-                                                                    <div class="col-sm-9">
-                                                                        <input type="text" class="form-control" name="vgola">
-                                                                    </div>
-                                                                </div><!--/form-group-->
-                                                                <div class="form-group">
-                                                                    <label class="col-sm-3 control-label"> শার্ট কলার </label>
-                                                                    <div class="col-sm-9">
-                                                                        <input type="text" class="form-control" name="surtorkolar">
-                                                                    </div>
-                                                                </div><!--/form-group-->
+                                                        </div><!--/form-group-->
 
+</div>
+                                                    
+                                                    
+                                                      <div class="col-md-3">
 
-                                                                <div class="form-group">
-                                                                    <label class="col-sm-3 control-label"> গোল গলা </label>
-                                                                    <div class="col-sm-9">
-                                                                        <input type="text" class="form-control" name="golgola">
-                                                                    </div>
-                                                                </div><!--/form-group-->
-
-                                                                <div class="form-group">
-                                                                    <label class="col-sm-3 control-label"> ডবল প্লেট </label>
-                                                                    <div class="col-sm-9">
-                                                                        <input type="text" class="form-control" name="doubleplat">
-                                                                    </div>
-                                                                </div><!--/form-group-->
-
-                                                                <div class="form-group">
-                                                                    <label class="col-sm-3 control-label"> বক্স প্লেট </label>
-                                                                    <div class="col-sm-9">
-                                                                        <input type="text" class="form-control" name="boxplat">
-                                                                    </div>
-                                                                </div><!--/form-group-->
-                                                                <div class="form-group">
-                                                                    <label class="col-sm-3 control-label"> ঘুণ্টি </label>
-                                                                    <div class="col-sm-9">
-                                                                        <input type="text" class="form-control" name="ghunti">
-                                                                    </div>
-                                                                </div><!--/form-group-->
-
-                                                                <div class="form-group">
-                                                                    <label class="col-sm-3 control-label"> নেট </label>
-                                                                    <div class="col-sm-9">
-                                                                        <input type="text" class="form-control" name="net">
-                                                                    </div>
-                                                                </div><!--/form-group-->
-
-                                                                <div class="form-group">
-                                                                    <label class="col-sm-3 control-label"> পাইপিং কলার </label>
-                                                                    <div class="col-sm-9">
-                                                                        <input type="text" class="form-control" name="pikingkolar">
-                                                                    </div>
-                                                                </div><!--/form-group-->
-
-                                                                <div class="form-group">
-                                                                    <label class="col-sm-3 control-label"> পেট  </label>
-                                                                    <div class="col-sm-9">
-                                                                        <input type="number" class="form-control" name="pet">
-                                                                    </div>
-                                                                </div><!--/form-group-->
-                                                                <div class="form-group">
-                                                                    <label class="col-sm-3 control-label"> হাতাই </label>
-                                                                    <div class="col-sm-9">
-                                                                        <input type="text" class="form-control" name="hatai">
-                                                                    </div>
-                                                                </div><!--/form-group-->
-
-                                                                <div class="form-group">
-                                                                    <label class="col-sm-3 control-label"> ফুলের নং </label>
-                                                                    <div class="col-sm-9">
-                                                                        <input type="text" class="form-control" name="phular">
-                                                                    </div>
-                                                                </div><!--/form-group-->
-
-
+                                                        <div class="form-group">
+                                                            <div class="col-sm-2">
+                                                                <input type="checkbox" class="form-control check-list-panj" name="round_soja"
+                                                                       value="শেরওয়ানী কলার মাথা  রাউন্ড">
                                                             </div>
-                                                        </div>
+                                                            <label class="col-sm-9 control-label" style="text-align:left;padding-right: 0px"> শেরওয়ানী কলার মাথা  রাউন্ড  </label>
+                                                        </div><!--/form-group-->
+                                                        
+                                                        <div class="form-group">
+                                                            <div class="col-sm-2">
+                                                                <input type="checkbox" class="form-control check-list-panj" name="round_coka"
+                                                                       value="শেরওয়ানী কলার মাথা সোজা">
+                                                            </div>
+                                                            <label class="col-sm-9 control-label" style="text-align:left !important;padding-right: 0px;"> শেরওয়ানী কলার মাথা সোজা </label>
+                                                        </div><!--/form-group-->
 
-
-
-
-
+                                                        <div class="form-group">
+                                                            <div class="col-sm-2">
+                                                                <input type="checkbox" class="form-control check-list-panj" name="round_coka"
+                                                                       value="নিচ হাতা ৩ সুতা সিলাই">
+                                                            </div>
+                                                            <label class="col-sm-9 control-label" style="text-align:left !important;padding-right: 0px;">  নিচ হাতা ৩ সুতা সিলাই </label>
+                                                        </div><!--/form-group-->
+                                                        <div class="form-group">
+                                                            <div class="col-sm-2">
+                                                                <input type="checkbox" class="form-control check-list-panj" name="round_coka"
+                                                                       value="পাইপিং সবখানে ১ পাশে হবে">
+                                                            </div>
+                                                            <label class="col-sm-9 control-label" style="text-align:left !important;padding-right: 0px;"> পাইপিং সবখানে ১ পাশে হবে </label>
+                                                        </div><!--/form-group-->
+                                                         <div class="form-group">
+                                                            <div class="col-sm-2">
+                                                                <input type="checkbox" class="form-control check-list-panj" name="round_coka"
+                                                                       value="পাইপিং সবখানে ২ পাশে হবে">
+                                                            </div>
+                                                            <label class="col-sm-9 control-label" style="text-align:left !important;padding-right: 0px;"> পাইপিং সবখানে ২ পাশে হবে </label>
+                                                        </div><!--/form-group-->
+                                                           <div class="form-group">
+                                                            <div class="col-sm-2">
+                                                                <input type="checkbox" class="form-control check-list-panj" name="round_coka"
+                                                                       value="২ পকেটের মুখে চেইন">
+                                                            </div>
+                                                            <label class="col-sm-9 control-label" style="text-align:left !important;padding-right: 0px;"> ২ পকেটের মুখে চেইন </label>
+                                                        </div><!--/form-group-->
+                                                         <div class="form-group">
+                                                            <div class="col-sm-2">
+                                                                <input type="checkbox" class="form-control check-list" name="round_coka"
+                                                                       value="বন পকেটের মুখে চেইন">
+                                                            </div>
+                                                            <label class="col-sm-9 control-label" style="text-align:left !important;padding-right: 0px;"> বন পকেটের মুখে চেইন </label>
+                                                        </div><!--/form-group-->
+                                                 
+                                                        <div class="form-group">
+                                                            <div class="col-sm-2">
+                                                                <input type="checkbox" class="form-control check-list" name="round_coka"
+                                                                       value="নিচ ।। হাফ সেলাই">
+                                                            </div>
+                                                            <label class="col-sm-9 control-label" style="text-align:left !important;padding-right: 0px;"> নিচ ।। হাফ সেলাই </label>
+                                                        </div><!--/form-group-->
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-3">
-
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">আলীগড়</label>
-                                                        <div class="col-sm-9">
-                                                            <input type="number" class="form-control" name="alighod">
-                                                        </div>
-                                                    </div><!--/form-group-->
-
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">সেলোয়ার</label>
-                                                        <div class="col-sm-9">
-                                                            <input type="number" class="form-control" name="salware">
-                                                        </div>
-                                                    </div><!--/form-group-->
-
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">চুড়ি</label>
-                                                        <div class="col-sm-9">
-                                                            <input type="number" class="form-control" name="chudi">
-                                                        </div>
-                                                    </div><!--/form-group-->
-
-
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label"> চোস্ত </label>
-                                                        <div class="col-sm-9">
-                                                            <input type="number" class="form-control" name="costo">
-                                                        </div>
-                                                    </div><!--/form-group-->
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">বেল্ট সেলোয়ার</label>
-                                                        <div class="col-sm-9">
-                                                            <input type="number" class="form-control" name="belt">
-                                                        </div>
-                                                    </div><!--/form-group-->
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">ধুতি</label>
-                                                        <div class="col-sm-9">
-                                                            <input type="number" class="form-control" name="dhuti">
-                                                        </div>
-                                                    </div><!--/form-group-->
-
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label"> সেরঃ পাঃ </label>
-                                                        <div class="col-sm-9">
-                                                            <input type="number" class="form-control" name="ser">
-                                                        </div>
-                                                    </div><!--/form-group-->
-
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label"> পাকি পাঃ </label>
-                                                        <div class="col-sm-9">
-                                                            <input type="number" class="form-control" name="paki">
-                                                        </div>
-                                                    </div><!--/form-group-->
-
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label"> ঘন সিলাই </label>
-                                                        <div class="col-sm-6">
-                                                            <input type="checkbox" class="form-control"
-                                                                   name="ghono_silay" value="1">
-                                                        </div>
-                                                    </div><!--/form-group-->
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label"> মোটাসূতা </label>
-                                                        <div class="col-sm-6">
-                                                            <input type="checkbox" class="form-control" name="motasuta"
-                                                                   value="1">
-                                                        </div>
-                                                    </div><!--/form-group-->
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label"> চিকনসূতা </label>
-                                                        <div class="col-sm-6">
-                                                            <input type="checkbox" class="form-control" name="cikonsuta"
-                                                                   value="1">
-                                                        </div>
-                                                    </div><!--/form-group-->
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label"> চওডা রাবার </label>
-                                                        <div class="col-sm-6">
-                                                            <input type="checkbox" class="form-control" name="rabar"
-                                                                   value="1">
-                                                        </div>
-                                                    </div><!--/form-group-->
-
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label"> ডুডি </label>
-                                                        <div class="col-sm-6">
-                                                            <input type="checkbox" class="form-control" name="dudi"
-                                                                   value="1">
-                                                        </div>
-                                                    </div><!--/form-group-->
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">মোঃ পঃ</label>
-                                                        <div class="col-sm-9">
-                                                            <input type="text" class="form-control" name="totalpocket">
-                                                        </div>
-                                                    </div><!--/form-group-->
-
-
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label"> পঃ চেন </label>
-                                                        <div class="col-sm-9">
-                                                            <input type="text" class="form-control" name="chain">
-                                                        </div>
-                                                    </div><!--/form-group-->
-
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label"> পিছে পঃ </label>
-                                                        <div class="col-sm-9">
-                                                            <input type="text" class="form-control" name="backpocket">
-                                                        </div>
-                                                    </div><!--/form-group-->
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label"> বিবরণ </label>
-                                                        <div class="col-sm-9">
-                                                            <textarea class="form-control" name="biborn"></textarea>
-                                                        </div>
-                                                    </div><!--/form-group-->
-                                                </div>
-                                                <div class="col-md-3">
-
-                                                </div>
-                                                <div class="col-md-3">
-
-                                                </div>
-                                            </div>
+                                            </div>    
                                     </div>
-
-
                                 </div>
                                 <!--/porlets-content-->
                                 <input type="submit" name="booking_add" class="btn btn-primary" value="Save">
                                 </form>
                             </div><!--/block-web-->
-
-
                             <!--      <button type="button" class="btn btn-default">Cancel</button>-->
                         </div><!--/col-md-6-->
 

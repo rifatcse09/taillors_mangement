@@ -33,9 +33,7 @@
                                                 <th>ID</th>
                                                 <th>Item Name</th>
                                                 <th>Item Code</th>
-                                                <th>Size</th>
                                                 <th>Unit</th>
-
                                                 <th  class="center hidden-phone">Action</th>
                                             </tr>
                                         </thead>
@@ -48,7 +46,6 @@
                                                     <td><?php echo $item_list['id'] ?></td>
                                                     <td><?php echo $item_list['item_name'] ?></td>
                                                     <td><?php echo $item_list['item_code'] ?></td>
-                                                    <td><?php echo $item_list['size'] ?></td>
                                                     <td><?php echo $item_list['unit'] ?></td>
                                                     <td class="center hidden-phone"><a class="btn btn-primary" href="itemEdit/item_id/<?php echo $item_list['id'] ?>">Edit</a></td>
                                                 </tr>     
@@ -59,7 +56,6 @@
                                                 <th>ID</th>
                                                 <th>Item Name</th>
                                                 <th>Item Code</th>
-                                                <th>Size</th>
                                                 <th>Unit</th>
                                                 <th  class="center hidden-phone">Action</th>
                                             </tr>

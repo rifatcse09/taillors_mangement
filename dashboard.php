@@ -31,6 +31,24 @@ $total_sale_row = $total_sale_q->fetch_assoc();
 /*end*/
 
 ?>
+<script>
+    function DeliveredFunction(param) {
+        // var link = 'measurement/order/'+param;
+        var urlajax = "post_url/deliveredComplete";
+        $.ajax({
+            type: "POST",
+            url: urlajax,
+            data: {
+                orderId: param,
+            },
+            success: function (data) {
+                window.location = 'dashboard';
+            },
+            error: function () {
+            }
+        });
+    }
+</script>
 <div class="contentpanel">
     <!--\\\\\\\ contentpanel start\\\\\\-->
     <div class="pull-left breadcrumb_admin clear_both">
@@ -49,7 +67,7 @@ $total_sale_row = $total_sale_q->fetch_assoc();
     <div class="container clear_both padding_fix">
         <!--\\\\\\\ container  start \\\\\\-->
         <div class="row">
-            <div class="col-sm-3 col-sm-6">
+<!--            <div class="col-sm-3 col-sm-6">
                 <div class="information green_info">
                     <div class="information_inner">
                         <div class="info green_symbols"><i class="fa fa-users icon"></i></div>
@@ -60,12 +78,12 @@ $total_sale_row = $total_sale_q->fetch_assoc();
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
             <?php
             if($user_type == "admin")
             {
                 ?>
-                <div class="col-sm-3 col-sm-6">
+<!--                <div class="col-sm-3 col-sm-6">
                     <div class="information green_info">
                         <div class="information_inner">
                             <div class="info green_symbols"><i class="fa fa-users icon"></i></div>
@@ -76,13 +94,13 @@ $total_sale_row = $total_sale_q->fetch_assoc();
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>-->
                 <?php
             }
             if($user_type == "employee")
             {
                 ?>
-                <div class="col-sm-3 col-sm-6">
+<!--                <div class="col-sm-3 col-sm-6">
                     <div class="information blue_info">
                         <div class="information_inner">
                             <div class="info blue_symbols"><i class="fa fa-shopping-cart icon"></i></div>
@@ -97,9 +115,9 @@ $total_sale_row = $total_sale_q->fetch_assoc();
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>-->
 
-                <div class="col-sm-3 col-sm-6">
+<!--                <div class="col-sm-3 col-sm-6">
                     <div class="information blue_info">
                         <div class="information_inner">
                             <div class="info blue_symbols"><i class="fa fa-shopping-cart icon"></i></div>
@@ -110,7 +128,7 @@ $total_sale_row = $total_sale_q->fetch_assoc();
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>-->
 
             <?php } if($user_type == "admin") { ?>
                 <!-- <div class="col-sm-3 col-sm-6">
@@ -126,7 +144,7 @@ $total_sale_row = $total_sale_q->fetch_assoc();
             </div>
           </div>-->
             <?php } if($user_type == "employee") { ?>
-                <div class="col-sm-3 col-sm-6">
+<!--                <div class="col-sm-3 col-sm-6">
                     <div class="information green_info">
                         <div class="information_inner">
                             <div class="info green_symbols"><i class="fa fa-users icon"></i></div>
@@ -137,7 +155,8 @@ $total_sale_row = $total_sale_q->fetch_assoc();
                             </div>
                         </div>
                     </div>
-                </div> <?php } ?>
+                </div>-->
+ <?php } ?>
         </div>
         <div class="row">
           <div class="col-md-12">
@@ -192,7 +211,7 @@ $total_sale_row = $total_sale_q->fetch_assoc();
                 </div><!--/block-web-->
             </div><!--/col-md-12-->
         </div><!--/row-->
-        <div class="row">
+<!--        <div class="row">
             <div class="col-md-12">
                 <div class="block-web">
                     <div class="header">
@@ -234,11 +253,11 @@ $total_sale_row = $total_sale_q->fetch_assoc();
 
                                 </table>
                             </div>
-                        </div><!--/table-responsive-->
-                    </div><!--/porlets-content-->
-                </div><!--/block-web-->
-            </div><!--/col-md-12-->
-       </div><!--/row-->
+                        </div>/table-responsive
+                    </div>/porlets-content
+                </div>/block-web
+            </div>/col-md-12
+       </div>/row-->
         <!--row start-->
 </div>
 
@@ -332,6 +351,22 @@ $total_sale_row = $total_sale_q->fetch_assoc();
         </div>
     </div>
 </nav>
+<!-- /sidebar chats -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- sidebar chats -->
 <nav class="atm-spmenu atm-spmenu-vertical atm-spmenu-right side-chat">
     <div class="header">
         <input type="text" class="form-control chat-search" placeholder=" Search">

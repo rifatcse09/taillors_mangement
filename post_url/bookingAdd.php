@@ -7,5 +7,5 @@ require_once('../functions/cls_dbconfig.php');
 	}
 
 	$cls_booking = new cls_booking();
-	echo $cls_booking->supplier_payment();
+	echo $cls_booking->orderBook();
 ?>
