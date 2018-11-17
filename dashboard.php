@@ -5,12 +5,8 @@ if($user_type == "admin")
 {
     $today_q = $cls_sales->today_sale_count();
     $total_sale_q = $cls_sales->total_sale_count();
-    // $total_sale_q = $cls_sales->total_sale_count_admin();
-    //$total_sale_row = $total_sale_q->fetch_assoc();
-
     $total_pur_q = $cls_purchase->total_pur_count_admin();
     $total_pur_row = $total_pur_q->fetch_assoc();
-
 } else {
     $today_q = $cls_sales->today_sale_count($user_id);
     $total_sale_q = $cls_sales->total_sale_count($user_id);
@@ -113,18 +109,6 @@ $total_sale_row = $total_sale_q->fetch_assoc();
                 </div>
 
             <?php } if($user_type == "admin") { ?>
-                <!-- <div class="col-sm-3 col-sm-6">
-            <div class="information red_info">
-              <div class="information_inner">
-              <div class="info red_symbols"><i class="fa fa-comments icon"></i></div>
-                <span>TOTAL PURCHASE</span>
-                <h2 class="bolded"><?php /*echo number_format($total_pur_row['total_purchase']).'/='; */?></h2>
-                <div class="infoprogress_red">
-                  <div class="redprogress"></div>
-                </div>
-              </div>
-            </div>
-          </div>-->
             <?php } if($user_type == "employee") { ?>
                 <div class="col-sm-3 col-sm-6">
                     <div class="information green_info">

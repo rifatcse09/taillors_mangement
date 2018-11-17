@@ -2,7 +2,7 @@
 session_start();
 if($_SESSION['user_id'] == "" && $_SESSION['usertype'] == "")
 {
-    header('location:http://mdrifatul.info/lalbag/');
+    header('location:http://localhost/lalbag/');
     exit;
 }
 $user_id = $_SESSION['user_id'];
@@ -14,7 +14,7 @@ function __autoload($classname){
     require_once("functions/$classname.class.php");
 }
 
-$base_url = 'http://mdrifatul.info/lalbag/';
+$base_url = 'http://localhost/lalbag/';
 $cls_booking = new cls_booking();
 $cls_datetime = new cls_datetime();
 $cls_user_info = new cls_user_info();
