@@ -153,8 +153,8 @@ class cls_booking {
         $pay_komor = $db->con()->real_escape_string("$_POST[pay_komor]");
         $pay_hai = $db->con()->real_escape_string("$_POST[pay_hai]");
         $pai_biboron = $db->con()->real_escape_string("$_POST[pai_biboron]");
-        $pai_plat_pada = $db->con()->real_escape_string("$_POST[pai_plat_pada]");
-        $pai_site_pocket = $db->con()->real_escape_string("$_POST[pai_site_pocket]");
+        $pai_plat_pada = 0;
+        $pai_site_pocket = 0;
         
      
         $id = $this->lastInsertId()+1;

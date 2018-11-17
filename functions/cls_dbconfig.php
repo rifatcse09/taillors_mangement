@@ -1,7 +1,7 @@
 <?php
 	class DB{
 		public function con(){
-			$db = new mysqli("localhost", "root", "", "al-qureshi");
+			$db = new mysqli("localhost", "root", "", "db_lalbag");
 			return $db;
 		}
         

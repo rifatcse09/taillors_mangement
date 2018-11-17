@@ -216,7 +216,7 @@ $newId = $lastId + 1;
                                                         <div class="form-group">
                                                             <!--                                                            <label class="col-sm-3 control-label">পায়জামা</label>-->
                                                             <div class="col-sm-10">
-                                                                <input type="text" class="form-control" name="payjama" placeholder="পায়জামা">
+                                                                <input type="number" class="form-control" name="payjama" placeholder="পায়জামা">
                                                             </div>
                                                         </div><!--/form-group-->
                                                     </div>
@@ -227,7 +227,7 @@ $newId = $lastId + 1;
                                                         <div class="form-group">
 <!--                                                            <label class="col-sm-3 control-label"> সালোয়ার </label>-->
                                                             <div class="col-sm-10">
-                                                                <input type="text" class="form-control" name="salware" placeholder="সালোয়ার">
+                                                                <input type="number" class="form-control" name="salware" placeholder="সালোয়ার">
                                                             </div>
                                                         </div><!--/form-group-->
                                                     </div>
@@ -235,7 +235,7 @@ $newId = $lastId + 1;
                                                         <div class="form-group">
 <!--                                                            <label class="col-sm-3 control-label"> সালোয়ার </label>-->
                                                             <div class="col-sm-10">
-                                                                <input type="text" class="form-control" name="cudidar" placeholder="চুড়িদার">
+                                                                <input type="number" class="form-control" name="cudidar" placeholder="চুড়িদার">
                                                             </div>
                                                         </div><!--/form-group-->
                                                     </div>
@@ -244,7 +244,7 @@ $newId = $lastId + 1;
                                                         <div class="form-group">
 <!--                                                            <label class="col-sm-3 control-label"> সালোয়ার </label>-->
                                                             <div class="col-sm-10">
-                                                                <input type="text" class="form-control" name="aligod" placeholder="আলীগড়">
+                                                                <input type="number" class="form-control" name="aligod" placeholder="আলীগড়">
                                                             </div>
                                                         </div><!--/form-group-->
                                                     </div>
@@ -397,9 +397,9 @@ $newId = $lastId + 1;
                                                                 
                                                                 <select class="form-control" name="plat_cl_sj">
                                                                     <option value="">Select</option>
-                                                                    <option value="">১</option>
-                                                                    <option value="">। ১</option>
-                                                                    <option value="">।। ১</option>
+                                                                    <option value="১">১</option>
+                                                                    <option value="১ ।">১ ।</option>
+                                                                    <option value="১ ।।">১ ।।</option>
                                                                 </select>
                                                             </div>
                                                         </div><!--/form-group-->
@@ -408,9 +408,9 @@ $newId = $lastId + 1;
                                                             <div class="col-sm-7" style="padding-left:0px;float: left">
                                                                  <select class="form-control" name="plat_cl_ck">
                                                                     <option value="">Select</option>
-                                                                     <option value="">১</option>
-                                                                    <option value="">। ১</option>
-                                                                    <option value="">।। ১</option>
+                                                                    <option value="১">১</option>
+                                                                    <option value="১ ।">১ ।</option>
+                                                                    <option value="১ ।।">১ ।।</option>
                                                                 </select>
                                                             </div>
                                                         </div><!--/form-group-->
@@ -438,9 +438,9 @@ $newId = $lastId + 1;
                                                     
 
                                                     <div class="col-md-3">   
-                                                          <div class="form-group">
-                                                              <label class="col-sm-12 control-label" style="text-align:left;padding-right: 0px"> পায়জামা/ সালোয়ার এর মাপের  জন্য</label>
-                                                   
+                                                        <div class="form-group">
+                                                            <label class="col-sm-12 control-label" style="text-align:left;padding-right: 0px"> পায়জামা/ সালোয়ার এর মাপের  জন্য</label>
+
                                                         </div><!--/form-group-->
                                                         <div class="form-group">
                                                             <label class="col-sm-3 control-label">লম্বা</label>
@@ -448,14 +448,14 @@ $newId = $lastId + 1;
                                                                 <input type="text" class="form-control" name="pay_lomba" >
                                                             </div>
                                                         </div><!--/form-group-->
-                                                   
+
                                                         <div class="form-group">
                                                             <label class="col-sm-3 control-label">মহুরী</label>
                                                             <div class="col-sm-9">
                                                                 <input type="text" class="form-control" name="pay_mohori">
                                                             </div>
                                                         </div><!--/form-group-->
-                                                        
+
                                                         <div class="form-group">
                                                             <label class="col-sm-3 control-label">কোমর</label>
                                                             <div class="col-sm-9">
@@ -468,31 +468,16 @@ $newId = $lastId + 1;
                                                                 <input type="text" class="form-control" name="pay_hai">
                                                             </div>
                                                         </div><!--/form-group-->
-                         
+
                                                         <div class="form-group">
                                                             <label class="col-sm-3 control-label"> বিবরণ </label>
                                                             <div class="col-sm-9">
                                                                 <textarea class="form-control pi-biboron"
-                                                                          name="pai_biboron" rows="6" cols="50"><?php echo '২ পকেট চেইন'. "\r\n". '৪ সেলাই'."\r\n".'মোটা রাবার' ?></textarea>
+                                                                          name="pai_biboron" rows="6" cols="50"><?php echo '২ পকেট চেইন' . "\r\n" . '৪ সেলাই' . "\r\n" . 'মোটা রাবার' ?></textarea>
                                                             </div>
                                                         </div><!--/form-group-->
 
-
-                                                        <div class="form-group">
-                                                            <label class="col-sm-3 control-label"> প্লেট ফাডা </label>
-                                                            <div class="col-sm-9">
-                                                                <input type="text" class="form-control" name="pai_plat_pada">
-                                                            </div>
-                                                        </div><!--/form-group-->
-
-                                                        <div class="form-group">
-                                                            <label class="col-sm-3 control-label"> সাইট পকেট </label>
-                                                            <div class="col-sm-9">
-                                                                <input type="text" class="form-control" name="pai_site_pocket">
-                                                            </div>
-                                                        </div><!--/form-group-->
-
-</div>
+                                                    </div>
                                                     
                                                     
                                                       <div class="col-md-3">
@@ -533,6 +518,21 @@ $newId = $lastId + 1;
                                                                        value="পাইপিং সবখানে ২ পাশে হবে">
                                                             </div>
                                                             <label class="col-sm-9 control-label" style="text-align:left !important;padding-right: 0px;"> পাইপিং সবখানে ২ পাশে হবে </label>
+                                                        </div><!--/form-group-->
+                                                        <div class="form-group">
+                                                            <div class="col-sm-2">
+                                                                <input type="checkbox" class="form-control check-list-panj" name="round_coka"
+                                                                       value="সেইম বোতাম">
+                                                            </div>
+                                                            <label class="col-sm-9 control-label" style="text-align:left !important;padding-right: 0px;"> সেইম বোতাম </label>
+                                                        </div><!--/form-group-->
+                                                        
+                                                         <div class="form-group">
+                                                            <div class="col-sm-2">
+                                                                <input type="checkbox" class="form-control check-list-panj" name="round_coka"
+                                                                       value="ডাবল ঘাট">
+                                                            </div>
+                                                            <label class="col-sm-9 control-label" style="text-align:left !important;padding-right: 0px;"> ডাবল ঘাট</label>
                                                         </div><!--/form-group-->
                                                            <div class="form-group">
                                                             <div class="col-sm-2">

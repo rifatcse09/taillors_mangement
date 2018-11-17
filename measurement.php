@@ -10,6 +10,7 @@ $order_row = $query->fetch_assoc();
 ?>
 <html xmlns:width="http://www.w3.org/1999/xhtml">
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <style type="text/css">
         body {
             font-size:12px;
@@ -47,7 +48,7 @@ $order_row = $query->fetch_assoc();
             <div class="section-top" style="float: left;width:100%;margin-top: 5px;border-bottom: 1px dotted gray;">
                 <div class="top">
                     <div class="top-left" style="float:left;width:30%">
-                        <label class="control-label" style="text-align:left;"> নং- </label>
+                        <label class="control-label" style="text-align:left;">মেমো নং- </label>
                         <label class=" control-label"> <?php echo $order_row['order_no'] ?> </label>
                     </div>
                     <div class="top-right" style="float:left;width:70%">
@@ -110,7 +111,7 @@ $order_row = $query->fetch_assoc();
                 </div>
                 <div style="float:left;margin-right: 5px;width: 100%">
                     <div>
-                        <label class="control-label" style="text-align:left;">নং- </label>
+                        <label class="control-label" style="text-align:left;">মেমো নং- </label>
                         <label class=" control-label"> <?php echo $order_row['order_no'] ?> </label>
 
                     </div><!--/form-group-->
@@ -231,21 +232,21 @@ $order_row = $query->fetch_assoc();
             <div class="footer">
                 <div class="sakkor" style="float:left;padding-right: 10px;padding-top: 2px;">মাষ্টার স্বাক্ষর</div>
                 <div class="sakkor" style="float:left;border:1px solid #000;padding: 1px;margin-right: 2px;">প্লেট  ফাড়া </div>
-                <div class="sakkor" style="float:left;border:1px solid #000;padding: 2px;margin-right: 2px;min-height: 15px;min-width: 50px;"><?php echo $order_row['pan_plat_pada'] > 0 ? $order_row['pan_plat_pada'] : '' ?></div>
+                <div class="sakkor" style="float:left;border:1px solid #000;padding: 2px;margin-right: 2px;min-height: 15px;min-width: 50px;"><?php echo !empty($order_row['pan_plat_pada'])? $order_row['pan_plat_pada'] : '' ?></div>
                 <div class="sakkor" style="float:left;border:1px solid #000;padding: 1px;margin-right: 2px"> সাইট পকেট </div>
-                <div class="sakkor" style="float:left;border:1px solid #000;padding: 2px;margin-right: 2px;min-height: 15px;min-width: 50px;"><?php echo $order_row['pan_site_pocket'] > 0 ? $order_row['pan_site_pocket'] : '' ?></div>
+                <div class="sakkor" style="float:left;border:1px solid #000;padding: 2px;margin-right: 2px;min-height: 15px;min-width: 50px;"><?php echo !empty($order_row['pan_site_pocket']) ? $order_row['pan_site_pocket'] : '' ?></div>
                 <div class="sakkor" style="float:left;padding-right: 5px;padding-top: 2px;">নিচে</div>
                 <div class="sakkor" style="float:left;padding-top: 2px;">কর্তৃপক্ষের স্বাক্ষর</div>
             </div>
         </div>
     </div>
-    <?php if($order_row['payjama'] > 0 || $order_row['saluar'] > 0 ){?>
+    <?php if($order_row['payjama'] > 0 || $order_row['saluar'] > 0 || $order_row['cudi'] > 0 || $order_row['aligod'] > 0 ){?>
     <div class="left">
         <div class="main-div">
             <div class="section-top" style="float: left;width:100%;margin-top: 5px;border-bottom: 1px dotted gray;">
                 <div class="top">
                     <div class="top-left" style="float:left;width:30%">
-                        <label class="control-label" style="text-align:left;"> নং- </label>
+                        <label class="control-label" style="text-align:left;">মেমো নং-  </label>
                         <label class=" control-label"> <?php echo $order_row['order_no'] ?> </label>
                     </div>
                     <div class="top-right" style="float:left;width:70%">
@@ -295,7 +296,7 @@ $order_row = $query->fetch_assoc();
                 </div>
                 <div style="float:left;margin-right: 5px;width: 100%">
                     <div>
-                        <label class="control-label" style="text-align:left;">নং- </label>
+                        <label class="control-label" style="text-align:left;">মেমো নং-  </label>
                         <label class=" control-label"> <?php echo $order_row['order_no'] ?> </label>
 
                     </div><!--/form-group-->
@@ -372,15 +373,6 @@ $order_row = $query->fetch_assoc();
                   <label class='control-label'>" . $order_row['aligod'] . "</label>
                   </div>" : '' ?>
                 </div>
-            </div>
-            <div class="footer">
-                <div class="sakkor" style="float:left;padding-right: 10px;padding-top: 2px;">মাষ্টার স্বাক্ষর</div>
-                <div class="sakkor" style="float:left;border:1px solid #000;padding: 1px;margin-right: 2px;">প্লেট  ফাড়া </div>
-                <div class="sakkor" style="float:left;border:1px solid #000;padding: 2px;margin-right: 2px;min-height: 15px;min-width: 50px;"><?php echo $order_row['pai_plat_pada'] > 0 ? $order_row['pai_plat_pada'] : '' ?></div>
-                <div class="sakkor" style="float:left;border:1px solid #000;padding: 1px;margin-right: 2px"> সাইট পকেট </div>
-                <div class="sakkor" style="float:left;border:1px solid #000;padding: 2px;margin-right: 2px;min-height: 15px;min-width: 50px;"><?php echo $order_row['pai_site_pocket'] > 0 ? $order_row['pai_site_pocket'] : '' ?></div>
-                <div class="sakkor" style="float:left;padding-right: 5px;padding-top: 2px;">নিচে</div>
-                <div class="sakkor" style="float:left;padding-top: 2px;">কর্তৃপক্ষের স্বাক্ষর</div>
             </div>
         </div>
     </div>
