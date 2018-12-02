@@ -56,7 +56,7 @@ require_once("include/header.php");
     </script>
     <style type="text/css">
         .control-label{
-            font-size: 10px;
+            font-size: 11px;
         }
     </style>
 
@@ -125,7 +125,6 @@ require_once("include/header.php");
                                                                        echo $order_date_is = $cls_datetime->exat_date()?>" readonly>
                                                             </div>
                                                         </div><!--/form-group-->
-
                                                     </div>
                                                 </div>
                                             </div>
@@ -139,10 +138,7 @@ require_once("include/header.php");
                                                                        required>
                                                             </div>
                                                         </div><!--/form-group-->
-
                                                     </div>
-
-
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
                                                             <label class="col-sm-4 control-label">Mobile :</label>
@@ -151,7 +147,6 @@ require_once("include/header.php");
                                                                        required>
                                                             </div>
                                                         </div><!--/form-group-->
-
                                                     </div>
                                                 </div>
                                             </div>
@@ -222,14 +217,6 @@ require_once("include/header.php");
                                                             </div>
                                                         </div><!--/form-group-->
 
-
-                                                        <div class="form-group">
-                                                            <label class="col-sm-3 control-label">কাবলী স্যুট</label>
-                                                            <div class="col-sm-9">
-                                                                <input type="number" class="form-control" name="suit">
-                                                            </div>
-                                                        </div><!--/form-group-->
-
                                                         <div class="form-group">
                                                             <label class="col-sm-3 control-label">এরাবিয়ান জুব্বা</label>
                                                             <div class="col-sm-9">
@@ -250,21 +237,15 @@ require_once("include/header.php");
                                                                 <input type="number" class="form-control" name="ambroydary">
                                                             </div>
                                                         </div><!--/form-group-->
-
-
                                                         <div class="form-group">
                                                             <label class="col-sm-3 control-label"> বিবরণ </label>
                                                             <div class="col-sm-9">
-                                                            <textarea class="form-control"
+                                                            <textarea style="height:200px" row="12"class="form-control"
                                                                       name="cloth_biborn"></textarea>
                                                             </div>
                                                         </div><!--/form-group-->
-
-
                                                     </div>
-
                                                     <div class="col-md-3">
-
                                                         <div class="form-group">
                                                             <label class="col-sm-3 control-label">লম্বা</label>
                                                             <div class="col-sm-9">
@@ -285,7 +266,6 @@ require_once("include/header.php");
                                                                 <input type="text" class="form-control" name="tira">
                                                             </div>
                                                         </div><!--/form-group-->
-
 
                                                         <div class="form-group">
                                                             <label class="col-sm-3 control-label">হাতা লম্বা </label>
@@ -315,32 +295,25 @@ require_once("include/header.php");
                                                             </div>
                                                         </div><!--/form-group-->
 
+                                                         <div class="form-group">
+                                                            <label class="col-sm-3 control-label"> কাবলি কোণা  </label>
+                                                            <div class="col-sm-9">
+                                                                <input type="text" class="form-control" name="kabli_kuna">
+                                                            </div>
+                                                        </div><!--/form-group-->
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3 control-label"> কাবলি রাউন্ড  </label>
+                                                            <div class="col-sm-9">
+                                                                <input type="text" class="form-control" name="kabli_round">
+                                                            </div>
+                                                        </div><!--/form-group-->
+
                                                     </div>
 
                                                     <div class="col-md-3">
                                                         <div class="row">
                                                             <div class="col-md-6">
-                                                                <div class="form-group">
-                                                                    <label class="col-sm-3 control-label"> লুছ </label>
-                                                                    <div class="col-sm-9">
-                                                                        <input type="text" class="form-control" name="luch">
-                                                                    </div>
-                                                                </div><!--/form-group-->
-
-                                                                <div class="form-group">
-                                                                    <label class="col-sm-3 control-label"> মিডিয়াম </label>
-                                                                    <div class="col-sm-9">
-                                                                        <input type="text" class="form-control" name="medium">
-                                                                    </div>
-                                                                </div><!--/form-group-->
-
-                                                                <div class="form-group">
-                                                                    <label class="col-sm-3 control-label"> ফিটিং </label>
-                                                                    <div class="col-sm-9">
-                                                                        <input type="text" class="form-control" name="fhiting">
-                                                                    </div>
-                                                                </div><!--/form-group-->
-
+                                                        
                                                                 <div class="form-group">
                                                                     <label class="col-sm-3 control-label"> সেরঃ কলার রাউন্ড </label>
                                                                     <div class="col-sm-9">
@@ -386,6 +359,48 @@ require_once("include/header.php");
 
                                                             </div>
                                                             <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label class="col-sm-3 control-label"> বুক পকেট </label>
+                                                                    <div class="col-sm-6">
+                                                                        <input type="checkbox" class="form-control" name="buk_pocket"
+                                                                            value="1">
+                                                                    </div>
+                                                                </div><!--/form-group-->
+                                                                <div class="form-group">
+                                                                    <label class="col-sm-3 control-label"> গোল গলা </label>
+                                                                    <div class="col-sm-6">
+                                                                        <input type="checkbox" class="form-control" name="gol_gola"
+                                                                            value="1">
+                                                                    </div>
+                                                                </div><!--/form-group-->
+                                                                <div class="form-group">
+                                                                    <label class="col-sm-3 control-label"> কাঁধে বেল্ট  </label>
+                                                                    <div class="col-sm-6">
+                                                                        <input type="checkbox" class="form-control" name="kade_belt"
+                                                                            value="1">
+                                                                    </div>
+                                                                </div><!--/form-group-->
+                                                                <div class="form-group">
+                                                                    <label class="col-sm-3 control-label">বুক পকেট ২টা ডাকনাসহ  </label>
+                                                                    <div class="col-sm-6">
+                                                                        <input type="checkbox" class="form-control" name="buk_poke_two_dakna"
+                                                                            value="1">
+                                                                    </div>
+                                                                </div><!--/form-group-->
+                                                                <div class="form-group">
+                                                                    <label class="col-sm-3 control-label"> বুক পকেট ১টা ডাকনাসহ  </label>
+                                                                    <div class="col-sm-6">
+                                                                        <input type="checkbox" class="form-control" name="buk_poke_one_dakna"
+                                                                            value="1">
+                                                                    </div>
+                                                                </div><!--/form-group-->
+                                                                <div class="form-group">
+                                                                    <label class="col-sm-3 control-label"> হাতে ফিতা </label>
+                                                                    <div class="col-sm-6">
+                                                                        <input type="checkbox" class="form-control" name="hate_fitha"
+                                                                            value="1">
+                                                                    </div>
+                                                                </div><!--/form-group-->
                                                                 <div class="form-group">
                                                                     <label class="col-sm-3 control-label"> ভি গলা </label>
                                                                     <div class="col-sm-9">
@@ -460,15 +475,8 @@ require_once("include/header.php");
                                                                         <input type="text" class="form-control" name="phular">
                                                                     </div>
                                                                 </div><!--/form-group-->
-
-
                                                             </div>
                                                         </div>
-
-
-
-
-
                                                     </div>
                                                 </div>
                                             </div>
@@ -590,6 +598,12 @@ require_once("include/header.php");
                                                         </div>
                                                     </div><!--/form-group-->
                                                     <div class="form-group">
+                                                        <label class="col-sm-3 control-label"> মাপ </label>
+                                                        <div class="col-sm-9">
+                                                            <input type="text" class="form-control" name="map">
+                                                        </div>
+                                                    </div><!--/form-group-->
+                                                    <div class="form-group">
                                                         <label class="col-sm-3 control-label"> বিবরণ </label>
                                                         <div class="col-sm-9">
                                                             <textarea class="form-control" name="biborn"></textarea>
@@ -597,29 +611,20 @@ require_once("include/header.php");
                                                     </div><!--/form-group-->
                                                 </div>
                                                 <div class="col-md-3">
-
                                                 </div>
                                                 <div class="col-md-3">
-
                                                 </div>
                                             </div>
                                     </div>
-
-
                                 </div>
                                 <!--/porlets-content-->
                                 <input type="submit" name="booking_add" class="btn btn-primary" value="Save">
                                 </form>
                             </div><!--/block-web-->
-
-
-                            <!--      <button type="button" class="btn btn-default">Cancel</button>-->
                         </div><!--/col-md-6-->
-
                         <!--/form-group-->
-                        </form>
-                    </div><!--/porlets-content-->
-
+                    </form>
+                </div><!--/porlets-content-->
                 </div><!--/block-web-->
         </div><!--/col-md-6-->
     </div>
