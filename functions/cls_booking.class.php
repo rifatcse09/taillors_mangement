@@ -11,6 +11,12 @@ class cls_booking {
         $result = DB::query("select id,order_no,order_date,delivery_date,name,mobile from tbl_order where status = 1 ORDER BY order_no,order_date DESC");
         return $result;
     }
+    public function order_info($order_id){
+        
+       // return "SELECT * FROM tbl_order JOIN tbl_master ON tbl_order.order_no = tbl_master.order_id AND tbl_order.order_no = $order_id";
+        return DB::query("SELECT * FROM tbl_order JOIN tbl_master ON tbl_order.order_no = tbl_master.order_id AND tbl_order.order_no =$order_id");
+       // return $result;
+    }
 
     public function update_booking() {
 

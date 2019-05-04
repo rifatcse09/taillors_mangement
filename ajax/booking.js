@@ -3,17 +3,40 @@ var booking_events = {
         $('#booking_edit').on('submit', function(e){
             e.preventDefault();
             var fd = new FormData(this);
-            booking.booking_edit(fd);
+            order.booking_edit(fd);
         });
         $('#booking_add').on('submit', function(e){
             e.preventDefault();
             var fd = new FormData(this);
-            booking.booking_add(fd);
+            order.booking_add(fd);
+        });
+        $('.orderinfo').on('click', function(e){
+            e.preventDefault();
+            var id = this.id;
+            var splitid = id.split('_');
+            var orderId = splitid[1];
+            //alert(orderId);
+           order.order_info(orderId);
         });
     }
 };
 
-var booking = {
+var order = {
+    order_info : function(orderId){
+        // AJAX request
+        $.ajax({
+            url:'post_url/orderInfo',
+            type: 'post',
+            data: {orderId: orderId},
+            success: function(response){ 
+                // Add response in Modal body
+                $('.modal-body').html(response); 
+
+                // Display Modal
+                $('#empModal').modal('show'); 
+            }
+        });
+    },
     booking_edit : function(fd){
         var xhr = new XMLHttpRequest();
         xhr.open('POST', 'post_url/bookingEdit', true);

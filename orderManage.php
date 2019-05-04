@@ -1,6 +1,12 @@
 <?php require_once("include/header.php"); ?>
-    <script>
-
+<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+<script>
+//paste this code under the head tag or in a separate js file.
+	// Wait for window load
+	$(window).load(function() {
+		// Animate loader off screen
+		$(".se-pre-con").fadeOut("slow");;
+	});
         function TestFunction(param) {
             var link = 'measurement/order/'+param;
             var mywindow = window.open(link);
@@ -30,6 +36,8 @@
                 });
         }
     </script>
+
+    <div class="se-pre-con"></div>
     <div class="contentpanel">
         <!--\\\\\\\ contentpanel start\\\\\\-->
         <div class="pull-left breadcrumb_admin clear_both">
@@ -89,6 +97,7 @@
                                                         <a class="btn btn-primary" data-toggle="tooltip" title="Re-Order!"  style='margin-left:5px;' href="reOrder/order/<?php echo $order_row['order_no']; ?>"><i class="fa fa-floppy-o" aria-hidden="true"></i></i></a>
                                                         <a class="btn btn-primary" data-toggle="tooltip" title="Print!" style='margin-left:5px;' id="print_measurement"  onclick="TestFunction('<?php echo $order_row['order_no']; ?>')"><i class="fa fa-print" aria-hidden="true"></i></a>
                                                         <a class="btn btn-primary" data-toggle="tooltip" title="Complete!" style='float:left' onclick="CompleteFunction('<?php echo $order_row['order_no']; ?>')" ><i class="fa fa-check-square-o" aria-hidden="true"></i></a>
+                                                        <button class="btn btn-primary orderinfo" id='butinfo_"<?=$order_row['order_no']?>"'>Info</button>
                                                     </td>
 
                                                 </tr>
@@ -112,6 +121,26 @@
     </div>
 
 
+    <!-- Modal -->
+    <div class="modal fade" id="empModal" role="dialog">
+        <div class="modal-dialog">
+        
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Order Info</h4>
+                </div>
+                <div class="modal-body">
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+                  
+        </div>
+    </div>
     <!--\\\\\\\ content panel end \\\\\\-->
 
 <?php require_once("include/footer.php"); ?>
