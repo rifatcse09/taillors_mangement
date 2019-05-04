@@ -2,7 +2,7 @@
 session_start();
 if($_SESSION['user_id'] == "" && $_SESSION['usertype'] == "")
 {
-    header('location:http://localhost/lalbag/');
+    header('location:http://localhost:8888/lalbag/');
     exit;
 }
 $user_id = $_SESSION['user_id'];
@@ -14,7 +14,7 @@ function __autoload($classname){
     require_once("functions/$classname.class.php");
 }
 
-$base_url = 'http://localhost/lalbag/';
+$base_url = 'http://localhost:8888/lalbag/';
 $cls_booking = new cls_booking();
 $cls_datetime = new cls_datetime();
 $cls_user_info = new cls_user_info();
